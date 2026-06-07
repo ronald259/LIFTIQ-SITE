@@ -1,0 +1,70 @@
+<!--
+  SSO-style redirect pagina (scenario B uit 03-site-integratie.md).
+  Plaats op https://liftiqsupplements.nl/training-os
+
+  Gedrag:
+  - Al ingelogd via gedeelde Supabase cookie? → direct door naar de app.
+  - Niet ingelogd? → toon CTA om te registreren/inloggen.
+
+  Vereist dat de site en app dezelfde Supabase + cookie-domein delen.
+-->
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LiftIQ Training OS</title>
+  <style>
+    body { background:#0a0a0a; color:#fff; font-family:system-ui,sans-serif;
+           display:flex; align-items:center; justify-content:center;
+           min-height:100vh; margin:0; padding:24px; }
+    .card { max-width:480px; text-align:center; }
+    h1 { font-size:32px; margin:0 0 12px; font-weight:900; }
+    p { color:#a1a1aa; line-height:1.6; }
+    .btn { display:inline-block; background:#2563eb; color:#fff;
+           padding:14px 28px; border-radius:12px; text-decoration:none;
+           font-weight:700; margin-top:24px; }
+    .spinner { width:32px; height:32px; border:3px solid #2a2a2a;
+               border-top-color:#2563eb; border-radius:50%;
+               animation:spin 0.8s linear infinite; margin:24px auto 0; }
+    @keyframes spin { to { transform:rotate(360deg); } }
+  </style>
+</head>
+<body>
+  <div class="card" id="root">
+    <h1>Training OS laden…</h1>
+    <p>We controleren je sessie en sturen je door.</p>
+    <div class="spinner"></div>
+  </div>
+
+  <script type="module">
+    import { createBrowserClient } from 'https://esm.sh/@supabase/ssr@0.5';
+
+    const SUPABASE_URL = 'JOUW_SUPABASE_URL';      // <-- vul in
+    const SUPABASE_ANON = 'JOUW_SUPABASE_ANON_KEY'; // <-- vul in
+    const APP_URL = 'https://app.liftiqsupplements.nl';
+
+    const supabase = createBrowserClient(SUPABASE_URL, SUPABASE_ANON, {
+      cookieOptions: { domain: '.liftiqsupplements.nl', sameSite: 'lax', secure: true },
+    });
+
+    const { data: { session } } = await supabase.auth.getSession();
+
+    if (session) {
+      // Gebruiker is al ingelogd via gedeelde cookie — meteen door.
+      window.location.replace(`${APP_URL}/dashboard`);
+    } else {
+      // Niet ingelogd — toon CTA.
+      document.getElementById('root').innerHTML = `
+        <h1>Welkom bij LiftIQ Training OS</h1>
+        <p>Maak een account aan of log in om je persoonlijke schema's te bekijken.</p>
+        <a class="btn" href="${APP_URL}/register">Start jouw traject</a>
+        <p style="margin-top:24px;">
+          Al een account?
+          <a href="${APP_URL}/login" style="color:#60a5fa;">Log in</a>
+        </p>
+      `;
+    }
+  </script>
+</body>
+</html>
