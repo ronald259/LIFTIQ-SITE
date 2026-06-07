@@ -1,0 +1,113 @@
+/* ===================================================================
+   LIFTIQ — Design System tokens (drop-in)
+   Gedeeld tussen LIFTIQ-SITE (webshop) en LiftIQ-APP (training-app).
+   Importeer dit bestand globaal:  @import "liftiq-theme.css";
+   of koppel het in je <head>.  Zie DESIGN-SYSTEM.md voor de richtlijnen.
+   =================================================================== */
+
+:root {
+  /* ── Kleuren ── */
+  --blue:          #00CFFF;   /* primaire accent */
+  --blue-dark:     #0099CC;
+  --dark:          #0a0a0a;   /* achtergrond */
+  --dark-2:        #111111;   /* secties / kaarten */
+  --dark-3:        #1a1a1a;   /* inputs / genest */
+  --dark-4:        #222222;
+  --white:         #ffffff;
+  --grey:          #888888;
+  --grey-light:    #cccccc;
+  --text-muted:    rgba(255,255,255,0.5);
+  --border:        rgba(0,207,255,0.15);
+  --border-strong: rgba(0,207,255,0.4);
+
+  /* ── Typografie ── */
+  --font-display:  Impact, 'Arial Narrow', sans-serif;
+  --font-body:     'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Vorm & beweging ── */
+  --radius:        0;          /* rechte hoeken = merkkenmerk */
+  --transition:    0.3s ease;
+
+  /* ── Signature effecten ── */
+  --hero-overlay:  linear-gradient(105deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 60%, rgba(0,207,255,0.05) 100%);
+  --glow-blue:     0 0 40px rgba(0,207,255,0.15), 0 20px 60px rgba(0,0,0,0.5);
+  --radial-glow:   radial-gradient(ellipse, rgba(0,207,255,0.07) 0%, transparent 68%);
+}
+
+/* ── Basis ── */
+.liftiq-theme,
+body.liftiq-theme {
+  background: var(--dark);
+  color: var(--white);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typografie-utilities ── */
+.lq-display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 0.97;
+  color: var(--white);
+}
+.lq-display .accent { color: var(--blue); }
+.lq-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.lq-muted { color: var(--text-muted); }
+.lq-line { width: 48px; height: 2px; background: var(--blue); margin: 1.25rem 0; }
+
+/* ── Knoppen ── */
+.lq-btn {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  border: none;
+  border-radius: var(--radius);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+}
+.lq-btn:hover { background: var(--blue-dark); color: #fff; transform: translateY(-1px); }
+.lq-btn--outline {
+  background: transparent;
+  color: var(--blue);
+  border: 1px solid var(--blue);
+}
+.lq-btn--outline:hover { background: var(--blue); color: var(--dark); }
+
+/* ── Kaart ── */
+.lq-card {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+}
+.lq-card:hover { border-color: var(--blue); box-shadow: var(--glow-blue); }
+
+/* ── Input ── */
+.lq-input {
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--white);
+  padding: 12px 14px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.lq-input:focus { border-color: var(--blue); }
+
+/* ── Scroll-reveal ── */
+.lq-reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.lq-reveal.visible { opacity: 1; transform: none; }
