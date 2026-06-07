@@ -20,12 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $producten = [
-        'preworkout_1'  => ['naam' => 'IGNITE Pre-Workout 1 pot',    'prijs' => 34.95],
-        'preworkout_2'  => ['naam' => 'IGNITE Pre-Workout 2 potten',  'prijs' => 64.95],
-        'straps'        => ['naam' => 'Lifting Straps PRO',           'prijs' => 24.95],
-        'sleeves_s'     => ['naam' => 'Knee Sleeves COMP X — S/M',    'prijs' => 39.95],
-        'sleeves_l'     => ['naam' => 'Knee Sleeves COMP X — L/XL',   'prijs' => 39.95],
-        'bundle_1'      => ['naam' => 'Starter Bundle (Pre + Straps)', 'prijs' => 54.95],
+        'preworkout_blue' => ['naam' => 'PRE LIFT 1 Pre-Workout — Blue Razz',            'prijs' => 34.95],
+        'preworkout_red'  => ['naam' => 'PRE LIFT 1 Pre-Workout — Wild Berry',           'prijs' => 34.95],
+        'preworkout_gold' => ['naam' => 'PRE LIFT 1 Pre-Workout — Tropical (cafeïnevrij)','prijs' => 34.95],
+        'straps'          => ['naam' => 'Lifting Straps PRO',                             'prijs' => 24.95],
+        'sleeves_s'       => ['naam' => 'Knee Sleeves COMP X — S/M',                      'prijs' => 39.95],
+        'sleeves_l'       => ['naam' => 'Knee Sleeves COMP X — L/XL',                     'prijs' => 39.95],
+        'bundle_1'        => ['naam' => 'Starter Bundle (PRE LIFT 1 + Straps)',           'prijs' => 54.95],
     ];
 
     $bestelling = $_POST['bestelling'] ?? [];
@@ -227,22 +228,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="product-lijst">
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">IGNITE Pre-Workout — 1 pot</div>
-            <div class="product-item-price">€34,95</div>
+            <div class="product-item-name">PRE LIFT 1 — Blue Razz</div>
+            <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">300mg cafeïne</span></div>
           </div>
           <div class="product-item-qty">
-            <select name="bestelling[preworkout_1]" class="qty-select" data-price="34.95">
+            <select name="bestelling[preworkout_blue]" class="qty-select" data-price="34.95">
               <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
             </select>
           </div>
         </div>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">IGNITE Pre-Workout — 2 potten</div>
-            <div class="product-item-price">€64,95 <span style="font-size:10px;color:var(--text-muted)">(bespaar €4,95)</span></div>
+            <div class="product-item-name">PRE LIFT 1 — Wild Berry</div>
+            <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">300mg cafeïne</span></div>
           </div>
           <div class="product-item-qty">
-            <select name="bestelling[preworkout_2]" class="qty-select" data-price="64.95">
+            <select name="bestelling[preworkout_red]" class="qty-select" data-price="34.95">
+              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
+            </select>
+          </div>
+        </div>
+        <div class="product-item">
+          <div class="product-item-info">
+            <div class="product-item-name">PRE LIFT 1 — Tropical (cafeïnevrij)</div>
+            <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">cafeïnevrij</span></div>
+          </div>
+          <div class="product-item-qty">
+            <select name="bestelling[preworkout_gold]" class="qty-select" data-price="34.95">
               <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
             </select>
           </div>
@@ -282,7 +294,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">Starter Bundle — Pre-Workout + Straps</div>
+            <div class="product-item-name">Starter Bundle — PRE LIFT 1 + Straps</div>
             <div class="product-item-price">€54,95 <span style="font-size:10px;color:var(--text-muted)">(bespaar €4,95)</span></div>
           </div>
           <div class="product-item-qty">
