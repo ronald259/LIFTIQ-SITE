@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LIFT IQ — Lift Smarter Every Day</title>
-<meta name="description" content="LIFT IQ premium voedingssupplementen en lifting gear. Pre-workout, lifting straps, knee sleeves. Lift Smarter Every Day.">
-<link rel="canonical" href="https://lift-supplements.nl/">
+<title>LIFTIQ — Lift Smarter. Every Day.</title>
+<meta name="description" content="LIFTIQ premium pre-workout: maximale focus, energie en pump. Optimaal gedoseerd, hoogwaardige ingrediënten, scherp geprijsd. Verzonden vanuit Nederland.">
+<link rel="canonical" href="https://liftiq-supplement.nl/">
 <link rel="stylesheet" href="style.css">
 <style>
 
@@ -133,6 +133,71 @@
   border-right: 1px solid var(--border);
 }
 .proof-item span { color: var(--blue); font-size: 16px; }
+
+/* ── NEWSLETTER ── */
+.newsletter-section {
+  position: relative;
+  padding: 6rem 4rem;
+  text-align: center;
+  overflow: hidden;
+}
+.newsletter-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,207,255,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+.newsletter-inner { position: relative; z-index: 1; max-width: 620px; margin: 0 auto; }
+.newsletter-inner h2 {
+  font-family: Impact, sans-serif;
+  font-size: clamp(34px, 5vw, 60px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+.newsletter-inner h2 span { color: var(--blue); }
+.newsletter-inner p {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+.newsletter-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 460px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.newsletter-form input {
+  flex: 1;
+  min-width: 220px;
+  background: var(--dark-3);
+  border: 1px solid var(--border);
+  color: var(--white);
+  padding: 14px 18px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color var(--transition);
+}
+.newsletter-form input:focus { border-color: var(--blue); }
+.newsletter-form button {
+  background: var(--blue);
+  color: var(--dark);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+.newsletter-form button:hover { background: var(--blue-dark); color: #fff; }
+.newsletter-note { font-size: 11px; color: var(--text-muted); margin-top: 1rem; }
 
 /* ── PRODUCTS ── */
 .products-section {
@@ -322,6 +387,116 @@
   text-transform: uppercase;
 }
 
+/* ── FAQ ── */
+.faq-section {
+  padding: 7rem 4rem;
+  max-width: 820px;
+  margin: 0 auto;
+}
+.faq-header { text-align: center; margin-bottom: 3.5rem; }
+.faq-header h2 {
+  font-family: Impact, sans-serif;
+  font-size: clamp(36px, 5vw, 60px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.faq-header p {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.8;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+}
+.faq-q {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  padding: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--white);
+  transition: color var(--transition);
+}
+.faq-q:hover { color: var(--blue); }
+.faq-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.faq-icon::before, .faq-icon::after {
+  content: '';
+  position: absolute;
+  background: var(--blue);
+  transition: opacity 0.3s ease;
+}
+.faq-icon::before { top: 50%; left: 0; right: 0; height: 2px; transform: translateY(-50%); }
+.faq-icon::after { left: 50%; top: 0; bottom: 0; width: 2px; transform: translateX(-50%); }
+.faq-item.open .faq-icon::after { opacity: 0; }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq-a-inner {
+  padding: 0 0 1.5rem;
+  font-size: 14px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.85;
+}
+
+/* ── CLOSING CTA ── */
+.cta-section {
+  position: relative;
+  padding: 7rem 4rem;
+  text-align: center;
+  background: var(--dark-2);
+  border-top: 1px solid var(--border);
+  overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0,207,255,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+.cta-inner h2 {
+  font-family: Impact, sans-serif;
+  font-size: clamp(34px, 5vw, 64px);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1.25rem;
+}
+.cta-inner h2 span { color: var(--blue); }
+.cta-inner p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  margin-bottom: 2.25rem;
+}
+.cta-fineprint {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 2.25rem auto 0;
+}
+
 /* ── USP GRID ── */
 .usp-section {
   padding: 6rem 4rem;
@@ -356,9 +531,12 @@
 /* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .hero-content { padding: 0 2rem; }
+  .newsletter-section { padding: 4rem 1.5rem; }
   .products-section { padding: 5rem 1.5rem; }
   .products-grid { grid-template-columns: 1fr; gap: 1rem; }
   .story-section { padding: 5rem 2rem; }
+  .faq-section { padding: 5rem 1.5rem; }
+  .cta-section { padding: 5rem 1.5rem; }
   .usp-section { padding: 4rem 2rem; }
   .usp-grid { grid-template-columns: repeat(2, 1fr); }
   .sfeer-section { height: 300px; }
@@ -376,13 +554,13 @@
   display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
   transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
 ">
-  <span style="font-family:Impact,sans-serif;font-size:15px;letter-spacing:0.15em;color:var(--blue);">LIFT IQ</span>
-  <select id="sticky-select" style="background:var(--dark-3);border:1px solid var(--border);color:rgba(255,255,255,0.85);font-size:12px;padding:6px 10px;outline:none;flex:1;max-width:260px;">
-    <option value="preworkout_blue" data-price="34.95">PRE LIFT 1 Blue Razz — €34,95</option>
-    <option value="preworkout_red" data-price="34.95">PRE LIFT 1 Wild Berry — €34,95</option>
-    <option value="preworkout_gold" data-price="34.95">PRE LIFT 1 Tropical (cafeïnevrij) — €34,95</option>
+  <span style="font-family:Impact,sans-serif;font-size:15px;letter-spacing:0.15em;color:var(--blue);">LIFTIQ</span>
+  <select id="sticky-select" style="background:var(--dark-3);border:1px solid var(--border);color:rgba(255,255,255,0.85);font-size:12px;padding:6px 10px;outline:none;flex:1;max-width:300px;">
+    <option value="preworkout_blue" data-price="34.95">Pre-Workout Blueberry — €34,95</option>
+    <option value="preworkout_red" data-price="34.95">Pre-Workout Strawberry Kiwi — €34,95</option>
+    <option value="preworkout_gold" data-price="34.95">Pre-Workout Tropical (cafeïnevrij) — €34,95</option>
     <option value="straps" data-price="24.95">Lifting Straps PRO — €24,95</option>
-    <option value="sleeves" data-price="39.95">Knee Sleeves COMP X — €39,95</option>
+    <option value="sleeves_s" data-price="39.95">Knee Sleeves COMP X — €39,95</option>
   </select>
   <span id="sticky-price" style="font-family:Impact,sans-serif;font-size:18px;color:var(--blue);">€34,95</span>
   <a href="bestellen.php" style="background:var(--blue);color:var(--dark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:10px 20px;text-decoration:none;white-space:nowrap;">Bestel Nu</a>
@@ -395,8 +573,9 @@
   </a>
   <ul class="nav-links">
     <li><a href="/" class="active">Home</a></li>
-    <li><a href="gear.html">Gear</a></li>
-    <li><a href="bestellen.php" class="nav-cta">Shop Nu</a></li>
+    <li><a href="#producten">Assortiment</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="bestellen.php" class="nav-cta">Bestel Nu</a></li>
   </ul>
   <button class="nav-hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
@@ -404,8 +583,9 @@
 </nav>
 <div class="nav-mobile" id="nav-mobile">
   <a href="/">Home</a>
-  <a href="gear.html">Gear</a>
-  <a href="bestellen.php">Shop Nu →</a>
+  <a href="#producten">Assortiment</a>
+  <a href="#faq">FAQ</a>
+  <a href="bestellen.php">Bestel Nu →</a>
 </div>
 
 <!-- HERO -->
@@ -414,13 +594,13 @@
   <div class="hero-overlay"></div>
   <div class="hero-grain"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow reveal">Premium Supplements &amp; Lifting Gear</div>
-    <h1 class="hero-headline reveal reveal-delay-1">LIFT<br><span>SMARTER</span><br>EVERY DAY</h1>
+    <div class="hero-eyebrow reveal">Premium Pre-Workout · Made in Holland</div>
+    <h1 class="hero-headline reveal reveal-delay-1">MAXIMALE<br><span>FOCUS</span><br>ENERGIE &amp; PUMP</h1>
     <div class="blue-line reveal reveal-delay-1"></div>
-    <p class="hero-sub reveal reveal-delay-2">Wetenschappelijk onderbouwde supplementen en premium lifting gear voor serieuze atleten. Geen bullshit. Alleen resultaat.</p>
+    <p class="hero-sub reveal reveal-delay-2">Lift Smarter. Every Day. Een premium pre-workout, optimaal gedoseerd met hoogwaardige ingrediënten — direct merkbaar in je dagelijkse prestaties.</p>
     <div class="hero-btns reveal reveal-delay-3">
-      <a href="bestellen.php" class="btn-blue">Shop Nu</a>
-      <a href="#producten" class="btn-outline">Bekijk Producten</a>
+      <a href="bestellen.php" class="btn-blue">Bestel Nu</a>
+      <a href="#producten" class="btn-outline">Bekijk Assortiment</a>
     </div>
   </div>
   <div class="hero-scroll">
@@ -433,43 +613,57 @@
 <div class="proof-strip">
   <div class="proof-track-wrap">
     <div class="proof-track">
-      <div class="proof-item"><span>⚡</span> Gratis verzending v.a. €50</div>
-      <div class="proof-item"><span>🧪</span> Gecertificeerde ingrediënten</div>
-      <div class="proof-item"><span>💪</span> +2.400 tevreden klanten</div>
-      <div class="proof-item"><span>🚚</span> Verzending binnen 24 uur</div>
-      <div class="proof-item"><span>🔬</span> No proprietary blends</div>
-      <div class="proof-item"><span>⭐</span> 4.9/5 gemiddelde beoordeling</div>
+      <div class="proof-item"><span>🇳🇱</span> Veilig verzonden vanuit Nederland</div>
+      <div class="proof-item"><span>🧪</span> Hoogwaardige ingrediënten</div>
+      <div class="proof-item"><span>⚖️</span> Optimaal gedoseerd</div>
+      <div class="proof-item"><span>🆕</span> Nieuwe formule, maximale werking</div>
+      <div class="proof-item"><span>💪</span> Scherp geprijsd</div>
+      <div class="proof-item"><span>⚡</span> Maximale focus &amp; pump</div>
     </div>
     <div class="proof-track" aria-hidden="true">
-      <div class="proof-item"><span>⚡</span> Gratis verzending v.a. €50</div>
-      <div class="proof-item"><span>🧪</span> Gecertificeerde ingrediënten</div>
-      <div class="proof-item"><span>💪</span> +2.400 tevreden klanten</div>
-      <div class="proof-item"><span>🚚</span> Verzending binnen 24 uur</div>
-      <div class="proof-item"><span>🔬</span> No proprietary blends</div>
-      <div class="proof-item"><span>⭐</span> 4.9/5 gemiddelde beoordeling</div>
+      <div class="proof-item"><span>🇳🇱</span> Veilig verzonden vanuit Nederland</div>
+      <div class="proof-item"><span>🧪</span> Hoogwaardige ingrediënten</div>
+      <div class="proof-item"><span>⚖️</span> Optimaal gedoseerd</div>
+      <div class="proof-item"><span>🆕</span> Nieuwe formule, maximale werking</div>
+      <div class="proof-item"><span>💪</span> Scherp geprijsd</div>
+      <div class="proof-item"><span>⚡</span> Maximale focus &amp; pump</div>
     </div>
   </div>
 </div>
 
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="section-eyebrow reveal">Nieuwsbrief</div>
+    <h2 class="reveal reveal-delay-1">KRIJG <span>10% KORTING</span></h2>
+    <p class="reveal reveal-delay-2">Ontvang als eerste toegang tot nieuwe producten en speciale acties. Mis geen enkele lancering en profiteer direct van extra voordeel op jouw eerste bestelling.</p>
+    <form class="newsletter-form reveal reveal-delay-3" id="newsletter-form" action="#" method="post">
+      <input type="email" name="email" placeholder="Jouw e-mailadres" required>
+      <button type="submit">Schrijf je in</button>
+    </form>
+    <div class="newsletter-note">Geen spam. Uitschrijven kan altijd.</div>
+  </div>
+</section>
+
 <!-- PRODUCTS -->
 <section class="products-section" id="producten">
   <div class="products-header">
-    <div class="section-eyebrow reveal">Onze Producten</div>
+    <div class="section-eyebrow reveal">Ons Assortiment</div>
     <h2 class="reveal reveal-delay-1">BUILT TO<br><span style="color:var(--blue)">PERFORM</span></h2>
     <div class="blue-line blue-line-center reveal reveal-delay-2"></div>
   </div>
   <div class="products-grid">
 
-    <!-- Pre-Workout — Blue Razz -->
+    <!-- Pre-Workout — Blueberry (blauw) -->
     <div class="product-card reveal">
       <div class="product-img-wrap">
-        <img src="images/preworkout-blue.jpg" alt="LIFTIQ PRE LIFT 1 Pre-Workout — Blue Razz" loading="lazy">
+        <img src="images/preworkout-blue.jpg" alt="LIFTIQ Pre-Workout — Blueberry" loading="lazy">
         <span class="product-badge">Bestseller</span>
       </div>
       <div class="product-body">
-        <div class="product-cat">Supplementen · Smaak</div>
-        <div class="product-name">PRE LIFT 1<br>Blue Razz</div>
-        <p class="product-desc">Blauwe framboos. 300mg cafeïne, beta-alanine &amp; citrulline malate. Transparante label, geen fillers. Explosieve focus &amp; pump.</p>
+        <div class="product-cat">Pre-Workout · Smaak</div>
+        <div class="product-name">PRE-WORKOUT<br>Blueberry</div>
+        <p class="product-desc">Frisse blueberry-smaak. Optimaal gedoseerd met hoogwaardige ingrediënten voor maximale focus, energie en pump — direct merkbaar in je training.</p>
         <div class="product-footer">
           <span class="product-price">€34,95</span>
           <a href="bestellen.php" class="product-btn">Bestel</a>
@@ -477,16 +671,16 @@
       </div>
     </div>
 
-    <!-- Pre-Workout — Wild Berry -->
+    <!-- Pre-Workout — Strawberry Kiwi (rood/roze) -->
     <div class="product-card reveal reveal-delay-1">
       <div class="product-img-wrap">
-        <img src="images/preworkout-red.jpg" alt="LIFTIQ PRE LIFT 1 Pre-Workout — Wild Berry" loading="lazy">
+        <img src="images/preworkout-red.jpg" alt="LIFTIQ Pre-Workout — Strawberry Kiwi" loading="lazy">
         <span class="product-badge">Nieuw</span>
       </div>
       <div class="product-body">
-        <div class="product-cat">Supplementen · Smaak</div>
-        <div class="product-name">PRE LIFT 1<br>Wild Berry</div>
-        <p class="product-desc">Rode bessen. 300mg cafeïne, beta-alanine &amp; citrulline malate. Maximale energie, focus &amp; pump voor elke set.</p>
+        <div class="product-cat">Pre-Workout · Smaak</div>
+        <div class="product-name">PRE-WORKOUT<br>Strawberry Kiwi</div>
+        <p class="product-desc">Zoete aardbei-kiwi. Volwaardig gedoseerd voor explosieve energie, scherpe focus en een serieuze pump bij elke set.</p>
         <div class="product-footer">
           <span class="product-price">€34,95</span>
           <a href="bestellen.php" class="product-btn">Bestel</a>
@@ -494,16 +688,16 @@
       </div>
     </div>
 
-    <!-- Pre-Workout — Tropical (cafeïnevrij) -->
+    <!-- Pre-Workout — Tropical (cafeïnevrij, goud) -->
     <div class="product-card reveal reveal-delay-2">
       <div class="product-img-wrap">
-        <img src="images/preworkout-gold.jpg" alt="LIFTIQ PRE LIFT 1 Pre-Workout — Tropical, cafeïnevrij" loading="lazy">
+        <img src="images/preworkout-gold.jpg" alt="LIFTIQ Pre-Workout — Tropical, cafeïnevrij" loading="lazy">
         <span class="product-badge">Cafeïnevrij</span>
       </div>
       <div class="product-body">
-        <div class="product-cat">Supplementen · Smaak</div>
-        <div class="product-name">PRE LIFT 1<br>Tropical</div>
-        <p class="product-desc">Tropische mix, cafeïnevrij. Beta-alanine &amp; citrulline malate. Pump en focus zonder de cafeïne — ook ideaal voor 's avonds.</p>
+        <div class="product-cat">Pre-Workout · Smaak</div>
+        <div class="product-name">PRE-WORKOUT<br>Tropical</div>
+        <p class="product-desc">Tropische mix, volledig cafeïnevrij. Pump en focus zonder de cafeïne — ook ideaal voor wie 's avonds traint of gevoelig is voor stimulanten.</p>
         <div class="product-footer">
           <span class="product-price">€34,95</span>
           <a href="bestellen.php" class="product-btn">Bestel</a>
@@ -514,7 +708,7 @@
     <!-- Lifting Straps -->
     <div class="product-card reveal reveal-delay-1">
       <div class="product-img-wrap">
-        <img src="images/straps.jpg" alt="LIFT IQ Lifting Straps PRO" loading="lazy">
+        <img src="images/straps.jpg" alt="LIFTIQ Lifting Straps PRO" loading="lazy">
         <span class="product-badge">PRO Series</span>
       </div>
       <div class="product-body">
@@ -531,7 +725,7 @@
     <!-- Knee Sleeves -->
     <div class="product-card reveal reveal-delay-2">
       <div class="product-img-wrap">
-        <img src="images/sleeves.jpg" alt="LIFT IQ Knee Sleeves Compression X" loading="lazy">
+        <img src="images/sleeves.jpg" alt="LIFTIQ Knee Sleeves Compression X" loading="lazy">
       </div>
       <div class="product-body">
         <div class="product-cat">Lifting Gear</div>
@@ -544,16 +738,16 @@
       </div>
     </div>
 
-    <!-- Shaker — Coming Soon -->
-    <div class="product-card reveal reveal-delay-1" style="opacity:1;">
+    <!-- Shakebeker LIFTIQ -->
+    <div class="product-card reveal reveal-delay-1">
       <div class="product-img-wrap">
-        <img src="images/shaker.jpg" alt="LIFTIQ RVS Shaker — binnenkort verkrijgbaar" loading="lazy" style="filter:grayscale(0.15) brightness(0.85);">
-        <span class="product-badge" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);">Coming Soon</span>
+        <img src="images/shaker.jpg" alt="Shakebeker LIFTIQ" loading="lazy">
+        <span class="product-badge" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);">Binnenkort</span>
       </div>
       <div class="product-body">
         <div class="product-cat">Accessoires</div>
-        <div class="product-name">RVS<br>Shaker</div>
-        <p class="product-desc">Premium roestvrijstalen LIFTIQ shaker met cyan accent. Lekvrij, vaatwasbestendig. Binnenkort verkrijgbaar.</p>
+        <div class="product-name">SHAKEBEKER<br>LIFTIQ</div>
+        <p class="product-desc">Premium LIFTIQ shakebeker met cyan accent. Lekvrij en stevig — de perfecte mix voor je pre-workout, overal mee naartoe.</p>
         <div class="product-footer">
           <span class="product-price" style="color:var(--text-muted);font-size:18px;">Binnenkort</span>
           <span class="product-btn" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);cursor:default;">Coming Soon</span>
@@ -568,12 +762,12 @@
 <section class="story-section">
   <div class="story-inner">
     <div class="section-eyebrow reveal">Ons Verhaal</div>
-    <h2 class="reveal reveal-delay-1">GEEN HYPE.<br><span>ALLEEN</span> RESULTAAT.</h2>
+    <h2 class="reveal reveal-delay-1">WAAROM DEZE<br><span>PRE-WORKOUT?</span></h2>
     <div class="blue-line reveal reveal-delay-1"></div>
-    <p class="reveal reveal-delay-2">LIFT IQ is opgericht door lifters, voor lifters. Zat van de supplementen vol fillers en gear die na drie maanden uit elkaar valt. Wij geloven in transparante labels, eerlijke prijzen en producten die het verschil maken in de gym.</p>
-    <p class="reveal reveal-delay-2">Elk product is getest. Elke ingrediënt verantwoord. Geen eigen blends die dosering verbergen — alleen wat werkt, in de juiste dosering.</p>
+    <p class="reveal reveal-delay-2">Ik ben dit merk begonnen nadat ik besloot te stoppen met school. In mijn omgeving had ik veel contact met sporters en daardoor zag ik van dichtbij hoe teleurgesteld veel mensen waren in de huidige pre-workouts op de markt. Veel bekende merken zijn laag gedoseerd, werken nauwelijks en hebben tóch een absurd hoge prijs.</p>
+    <p class="reveal reveal-delay-2">Dat motiveerde mij om zelf een pre-workout te ontwikkelen die wél doet wat hij moet doen.</p>
     <div class="reveal reveal-delay-3">
-      <a href="bestellen.php" class="btn-blue">Shop de Collectie</a>
+      <a href="bestellen.php" class="btn-blue">Meer over Liftiq</a>
     </div>
   </div>
 </section>
@@ -583,34 +777,85 @@
   <div class="sfeer-parallax" id="sfeer-parallax"></div>
   <div class="sfeer-overlay"></div>
   <div class="sfeer-content reveal">
-    <h2>TRAIN <span>HARDER</span><br>RECOVER SMARTER</h2>
-    <p>Lift Smarter Every Day</p>
+    <h2>NIEUWE FORMULE<br><span>MAXIMALE WERKING</span></h2>
+    <p>Lift Smarter. Every Day.</p>
   </div>
 </div>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="faq-header">
+    <div class="section-eyebrow reveal">Veelgestelde Vragen</div>
+    <h2 class="reveal reveal-delay-1">FAQ</h2>
+    <p class="reveal reveal-delay-2">Duidelijke antwoorden op de vragen die we het vaakst krijgen over onze supplementen, veiligheid, gebruik en resultaten. Heb je daarna nog vragen, dan staat ons supportteam altijd klaar om mee te denken.</p>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q">Wat maakt deze pre-workout anders dan de rest?<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">In tegenstelling tot veel bekende merken is onze pre-workout volwaardig gedoseerd met hoogwaardige ingrediënten. Geen onderdosering en geen onnodige fillers — alleen wat werkt, zodat je het verschil direct voelt in je training.</div></div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q">Wat was de grootste reden om te denken: "Ik ga dit zelf beter doen"?<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">Te veel sporters in mijn omgeving waren teleurgesteld: dure pre-workouts die nauwelijks werkten. Ik wilde bewijzen dat het beter kan — een formule die wél doet wat hij belooft, voor een eerlijke prijs.</div></div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q">Waarom is deze pre-workout scherp geprijsd?<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">Wij werken zonder onnodige tussenhandel en marketingkosten. Die besparing geven we door aan jou, zodat je een premium product krijgt zonder de absurde prijs van de grote merken.</div></div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q">Voor wie is deze pre-workout bedoeld?<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">Voor iedere serieuze sporter die maximale focus, energie en pump zoekt — van beginner tot gevorderde lifter. Er is ook een cafeïnevrije variant voor wie 's avonds traint of gevoelig is voor cafeïne.</div></div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q">Wanneer moet je het innemen?<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">Neem het ongeveer 20–30 minuten vóór je training in, gemengd met water. Begin met een halve dosis om je tolerantie te testen en bouw daarna eventueel op naar een volledige dosis.</div></div>
+  </div>
+
+  <div class="faq-item reveal">
+    <button class="faq-q">Is het veilig?<span class="faq-icon"></span></button>
+    <div class="faq-a"><div class="faq-a-inner">Onze producten worden ontwikkeld volgens strikte kwaliteitsnormen en veilig verzonden vanuit Nederland. Houd je aan de aanbevolen dosering. Gebruik je medicijnen, ben je zwanger of heb je een medische aandoening? Raadpleeg dan eerst een arts.</div></div>
+  </div>
+</section>
 
 <!-- USP -->
 <section class="usp-section">
   <div class="usp-grid">
     <div class="usp-item reveal">
-      <span class="usp-icon">🔬</span>
-      <div class="usp-title">Transparante Label</div>
-      <p class="usp-desc">Elke dosis zichtbaar. Geen proprietary blends, geen verborgen fillers.</p>
+      <span class="usp-icon">🧪</span>
+      <div class="usp-title">Hoogwaardig</div>
+      <p class="usp-desc">Ontwikkeld met hoogwaardige ingrediënten volgens strikte kwaliteitsnormen.</p>
     </div>
     <div class="usp-item reveal reveal-delay-1">
-      <span class="usp-icon">🏭</span>
-      <div class="usp-title">GMP Gecertificeerd</div>
-      <p class="usp-desc">Geproduceerd in GMP-gecertificeerde faciliteiten. Kwaliteit gegarandeerd.</p>
+      <span class="usp-icon">⚖️</span>
+      <div class="usp-title">Optimaal Gedoseerd</div>
+      <p class="usp-desc">Volwaardige dosering die echt werkt. Geen onderdosering, geen verborgen fillers.</p>
     </div>
     <div class="usp-item reveal reveal-delay-2">
-      <span class="usp-icon">🚚</span>
-      <div class="usp-title">Snelle Levering</div>
-      <p class="usp-desc">Besteld voor 15:00 uur? Morgen in huis. Gratis verzending v.a. €50.</p>
+      <span class="usp-icon">🇳🇱</span>
+      <div class="usp-title">Uit Nederland</div>
+      <p class="usp-desc">Veilig verzonden vanuit Nederland, zodat je altijd weet wat je binnenkrijgt.</p>
     </div>
     <div class="usp-item reveal reveal-delay-3">
       <span class="usp-icon">💪</span>
-      <div class="usp-title">Lifetime Garantie</div>
-      <p class="usp-desc">Alle gear met lifetime garantie. Supplementen: niet tevreden, geld terug.</p>
+      <div class="usp-title">Scherp Geprijsd</div>
+      <p class="usp-desc">Premium kwaliteit zonder de absurde prijs van de bekende merken.</p>
     </div>
+  </div>
+</section>
+
+<!-- CLOSING CTA -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2 class="reveal">ERVAAR HET VERSCHIL<br><span>VANDAAG NOG</span></h2>
+    <p class="reveal reveal-delay-1">Ons premium supplement ondersteunt jouw energie en herstel. Bestel nu en begin meteen met een betere routine.</p>
+    <div class="reveal reveal-delay-2">
+      <a href="bestellen.php" class="btn-blue">Koop Nu</a>
+    </div>
+    <p class="cta-fineprint reveal reveal-delay-3">Onze producten worden ontwikkeld volgens strikte kwaliteitsnormen en veilig verzonden vanuit Nederland, zodat jij altijd weet wat je binnenkrijgt.</p>
   </div>
 </section>
 
@@ -618,27 +863,30 @@
 <footer class="footer">
   <div>
     <img src="images/liftiq-logo-white.png" class="footer-logo-img" alt="LIFTIQ" style="height:38px;width:auto;display:block;margin-bottom:10px;">
-    <div class="footer-tagline">Lift Smarter Every Day</div>
+    <div class="footer-tagline">Lift Smarter. Every Day.</div>
   </div>
   <div>
-    <div class="footer-col-title">Navigatie</div>
+    <div class="footer-col-title">Over Liftiq &amp; Account</div>
     <ul class="footer-links">
-      <li><a href="/">Home</a></li>
-      <li><a href="gear.html">Gear</a></li>
-      <li><a href="bestellen.php">Shop Nu</a></li>
+      <li><a href="#">Over Liftiq Supplement</a></li>
+      <li><a href="#">Mijn account</a></li>
+      <li><a href="#">Retourbeleid</a></li>
+      <li><a href="#faq">FAQ</a></li>
     </ul>
   </div>
   <div>
-    <div class="footer-col-title">Contact</div>
-    <div class="footer-info">
-      <a href="mailto:info@lift-supplements.nl">info@lift-supplements.nl</a><br>
-      lift-supplements.nl
-    </div>
+    <div class="footer-col-title">Informatie &amp; Voorwaarden</div>
+    <ul class="footer-links">
+      <li><a href="#">Algemene voorwaarden</a></li>
+      <li><a href="#">Cookieverklaring</a></li>
+      <li><a href="#">Privacy verklaring</a></li>
+      <li><a href="#">Disclaimer</a></li>
+    </ul>
   </div>
 </footer>
 <div class="footer-bottom">
-  <span>© 2026 LIFT IQ · lift-supplements.nl</span>
-  <span>Lift Smarter Every Day.</span>
+  <span>© 2026 • Liftiq-supplement</span>
+  <span>Lift Smarter. Every Day.</span>
 </div>
 
 <script>
@@ -690,6 +938,34 @@ document.querySelectorAll('.product-card').forEach(card => {
   });
   card.addEventListener('mouseleave', () => card.style.transform = '');
 });
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.parentElement;
+    const answer = btn.nextElementSibling;
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(openItem => {
+      openItem.classList.remove('open');
+      openItem.querySelector('.faq-a').style.maxHeight = null;
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  });
+});
+
+// Newsletter (placeholder — nog te koppelen aan Brevo)
+const newsletterForm = document.getElementById('newsletter-form');
+if (newsletterForm) {
+  newsletterForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const btn = newsletterForm.querySelector('button');
+    btn.textContent = 'Bedankt! ✓';
+    btn.disabled = true;
+  });
+}
 
 // Scroll reveal
 const observer = new IntersectionObserver(entries => {

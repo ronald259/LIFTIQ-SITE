@@ -20,13 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $producten = [
-        'preworkout_blue' => ['naam' => 'PRE LIFT 1 Pre-Workout — Blue Razz',            'prijs' => 34.95],
-        'preworkout_red'  => ['naam' => 'PRE LIFT 1 Pre-Workout — Wild Berry',           'prijs' => 34.95],
-        'preworkout_gold' => ['naam' => 'PRE LIFT 1 Pre-Workout — Tropical (cafeïnevrij)','prijs' => 34.95],
+        'preworkout_blue' => ['naam' => 'Pre-Workout Blueberry',                          'prijs' => 34.95],
+        'preworkout_red'  => ['naam' => 'Pre-Workout Strawberry Kiwi',                    'prijs' => 34.95],
+        'preworkout_gold' => ['naam' => 'Pre-Workout Tropical (cafeïnevrij)',             'prijs' => 34.95],
         'straps'          => ['naam' => 'Lifting Straps PRO',                             'prijs' => 24.95],
         'sleeves_s'       => ['naam' => 'Knee Sleeves COMP X — S/M',                      'prijs' => 39.95],
         'sleeves_l'       => ['naam' => 'Knee Sleeves COMP X — L/XL',                     'prijs' => 39.95],
-        'bundle_1'        => ['naam' => 'Starter Bundle (PRE LIFT 1 + Straps)',           'prijs' => 54.95],
+        'bundle_1'        => ['naam' => 'Starter Bundle (Pre-Workout + Straps)',          'prijs' => 54.95],
     ];
 
     $bestelling = $_POST['bestelling'] ?? [];
@@ -55,8 +55,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
             'amount'      => ['currency' => 'EUR', 'value' => number_format($totaal, 2, '.', '')],
             'description' => 'LIFT IQ — ' . implode(', ', $regels),
-            'redirectUrl' => 'https://lift-supplements.nl/bedankt.html',
-            'webhookUrl'  => 'https://lift-supplements.nl/webhook.php',
+            'redirectUrl' => 'https://liftiq-supplement.nl/bedankt.html',
+            'webhookUrl'  => 'https://liftiq-supplement.nl/webhook.php',
             'metadata'    => [
                 'naam'      => $naam,
                 'email'     => $email,
@@ -81,7 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: ' . $result['_links']['checkout']['href']);
             exit;
         } else {
-            $errors[] = 'Betaling kon niet worden aangemaakt. Probeer opnieuw of mail info@lift-supplements.nl';
+            $errors[] = 'Betaling kon niet worden aangemaakt. Probeer opnieuw of mail info@liftiq-supplement.nl';
         }
     }
 }
@@ -93,7 +93,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shop — LIFT IQ</title>
 <meta name="description" content="Bestel LIFT IQ supplementen en lifting gear. Snelle levering, gratis verzending v.a. €50.">
-<link rel="canonical" href="https://lift-supplements.nl/bestellen.php">
+<link rel="canonical" href="https://liftiq-supplement.nl/bestellen.php">
 <link rel="stylesheet" href="style.css">
 <style>
 .page-hero {
@@ -228,8 +228,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="product-lijst">
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">PRE LIFT 1 — Blue Razz</div>
-            <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">300mg cafeïne</span></div>
+            <div class="product-item-name">Pre-Workout Blueberry</div>
+            <div class="product-item-price">€34,95</div>
           </div>
           <div class="product-item-qty">
             <select name="bestelling[preworkout_blue]" class="qty-select" data-price="34.95">
@@ -239,8 +239,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">PRE LIFT 1 — Wild Berry</div>
-            <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">300mg cafeïne</span></div>
+            <div class="product-item-name">Pre-Workout Strawberry Kiwi</div>
+            <div class="product-item-price">€34,95</div>
           </div>
           <div class="product-item-qty">
             <select name="bestelling[preworkout_red]" class="qty-select" data-price="34.95">
@@ -250,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">PRE LIFT 1 — Tropical (cafeïnevrij)</div>
+            <div class="product-item-name">Pre-Workout Tropical (cafeïnevrij)</div>
             <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">cafeïnevrij</span></div>
           </div>
           <div class="product-item-qty">
@@ -294,7 +294,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">Starter Bundle — PRE LIFT 1 + Straps</div>
+            <div class="product-item-name">Starter Bundle — Pre-Workout + Straps</div>
             <div class="product-item-price">€54,95 <span style="font-size:10px;color:var(--text-muted)">(bespaar €4,95)</span></div>
           </div>
           <div class="product-item-qty">
@@ -396,12 +396,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div>
     <div class="footer-col-title">Contact</div>
     <div class="footer-info">
-      <a href="mailto:info@lift-supplements.nl">info@lift-supplements.nl</a>
+      <a href="mailto:info@liftiq-supplement.nl">info@liftiq-supplement.nl</a>
     </div>
   </div>
 </footer>
 <div class="footer-bottom">
-  <span>© 2026 LIFT IQ · lift-supplements.nl</span>
+  <span>© 2026 LIFT IQ · liftiq-supplement.nl</span>
   <span>Lift Smarter Every Day.</span>
 </div>
 
