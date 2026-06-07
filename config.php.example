@@ -1,0 +1,6 @@
+<?php
+// Kopieer dit bestand naar config.php en vul je Mollie live API key in
+// Haal op via: https://my.mollie.com/dashboard/developers/api-keys
+// LET OP: config.php staat in .gitignore en wordt NOOIT gecommit
+define('MOLLIE_API_KEY', 'live_VERVANG_MET_JOUW_KEY');
+?>

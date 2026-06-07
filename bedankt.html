@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bedankt! — LIFT IQ</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="style.css">
+<style>
+body { display: flex; flex-direction: column; min-height: 100vh; }
+.bedankt-main {
+  flex: 1; display: flex; flex-direction: column; align-items: center;
+  justify-content: center; text-align: center; padding: 120px 2rem 5rem;
+  background: var(--dark); position: relative; overflow: hidden;
+}
+.bedankt-main::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(0,207,255,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+.bedankt-icon { font-size: 64px; margin-bottom: 1.5rem; position: relative; z-index: 1; animation: popIn 0.6s cubic-bezier(0.175,0.885,0.32,1.275) both; }
+@keyframes popIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.bedankt-titel { font-family: Impact, sans-serif; font-size: clamp(52px,8vw,80px); letter-spacing: 0.08em; color: var(--blue); margin-bottom: 1rem; position: relative; z-index: 1; animation: fadeUp 0.6s 0.15s ease both; }
+.bedankt-sub { font-size: 18px; color: rgba(255,255,255,0.7); line-height: 1.8; max-width: 440px; margin-bottom: 2.5rem; position: relative; z-index: 1; animation: fadeUp 0.6s 0.25s ease both; }
+@keyframes fadeUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.bedankt-slogan { font-style: italic; font-size: 20px; color: var(--blue); margin-bottom: 2.5rem; position: relative; z-index: 1; animation: fadeUp 0.6s 0.35s ease both; }
+.bedankt-btn { position: relative; z-index: 1; animation: fadeUp 0.6s 0.45s ease both; }
+.blue-line-anim { width: 0; height: 2px; background: var(--blue); margin: 0 auto 2.5rem; animation: growLine 0.8s 0.1s ease both; position: relative; z-index: 1; }
+@keyframes growLine { from { width: 0; } to { width: 60px; } }
+</style>
+</head>
+<body>
+<nav class="nav scrolled">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">
+      <span class="nav-logo-name">LIFT IQ</span>
+      <span class="nav-logo-sub">Lift Smarter Every Day</span>
+    </div>
+  </a>
+</nav>
+
+<main class="bedankt-main">
+  <div class="bedankt-icon">💪</div>
+  <h1 class="bedankt-titel">ORDER CONFIRMED!</h1>
+  <div class="blue-line-anim"></div>
+  <p class="bedankt-sub">Je bestelling is ontvangen en je betaling is verwerkt. We sturen je order zo snel mogelijk op!</p>
+  <div class="bedankt-slogan">Lift Smarter. Every Day.</div>
+  <div class="bedankt-btn">
+    <a href="/" class="btn-blue">← Terug naar LIFT IQ</a>
+  </div>
+</main>
+
+<footer class="footer">
+  <div>
+    <div class="footer-logo">LIFT IQ</div>
+    <div class="footer-tagline">Lift Smarter Every Day</div>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <div class="footer-info">
+      <a href="mailto:info@lift-supplements.nl">info@lift-supplements.nl</a>
+    </div>
+  </div>
+  <div></div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 LIFT IQ · lift-supplements.nl</span>
+  <span>Lift Smarter Every Day.</span>
+</div>
+</body>
+</html>

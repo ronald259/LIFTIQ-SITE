@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIFT IQ — Lift Smarter Every Day</title>
+<meta name="description" content="LIFT IQ premium voedingssupplementen en lifting gear. Pre-workout, lifting straps, knee sleeves. Lift Smarter Every Day.">
+<link rel="canonical" href="https://lift-supplements.nl/">
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-parallax {
+  position: absolute;
+  inset: -15%;
+  background: url('images/hero-bg.jpg') center/cover no-repeat;
+  will-change: transform;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 60%, rgba(0,207,255,0.05) 100%);
+}
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 200px;
+  animation: grain 0.8s steps(2) infinite;
+  pointer-events: none;
+}
+@keyframes grain {
+  0%,100% { transform: translate(0,0); }
+  25% { transform: translate(-2%,1%); }
+  50% { transform: translate(1%,-2%); }
+  75% { transform: translate(2%,2%); }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 6rem;
+  max-width: 700px;
+}
+.hero-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 1.5rem;
+}
+.hero-headline {
+  font-family: Impact, 'Arial Narrow', sans-serif;
+  font-size: clamp(52px, 8vw, 96px);
+  line-height: 0.95;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.hero-headline span { color: var(--blue); }
+.hero-sub {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.8;
+  max-width: 460px;
+  margin-bottom: 2.5rem;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255,255,255,0.35);
+  font-size: 9px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--blue), transparent);
+  animation: scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0%,100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+/* ── MARQUEE ── */
+.proof-strip {
+  background: var(--dark-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 0;
+  overflow: hidden;
+}
+.proof-track-wrap {
+  display: flex;
+  animation: marquee 28s linear infinite;
+  width: max-content;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.proof-track { display: flex; gap: 0; }
+.proof-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 3rem;
+  white-space: nowrap;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border-right: 1px solid var(--border);
+}
+.proof-item span { color: var(--blue); font-size: 16px; }
+
+/* ── PRODUCTS ── */
+.products-section {
+  padding: 7rem 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.products-header { text-align: center; margin-bottom: 4rem; }
+.products-header h2 {
+  font-family: Impact, sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+.product-card {
+  background: var(--dark-2);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.product-card:hover {
+  border-color: var(--blue);
+  box-shadow: 0 0 40px rgba(0,207,255,0.15), 0 20px 60px rgba(0,0,0,0.5);
+}
+.product-img-wrap {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  position: relative;
+}
+.product-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+.product-card:hover .product-img-wrap img { transform: scale(1.04); }
+.product-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: var(--blue);
+  color: var(--dark);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+.product-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.product-cat {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 6px;
+}
+.product-name {
+  font-family: Impact, sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.product-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+.product-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.product-price {
+  font-family: Impact, sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.04em;
+  color: var(--white);
+}
+.product-btn {
+  background: var(--blue);
+  color: var(--dark);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  text-decoration: none;
+  transition: background var(--transition);
+  border: none;
+  cursor: pointer;
+}
+.product-btn:hover { background: var(--blue-dark); color: #fff; }
+
+/* ── STORY SECTION ── */
+.story-section {
+  position: relative;
+  padding: 8rem 4rem;
+  background: var(--dark-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.story-section::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(ellipse at right, rgba(0,207,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.story-inner {
+  max-width: 640px;
+  position: relative;
+  z-index: 1;
+}
+.story-inner h2 {
+  font-family: Impact, sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 1.5rem;
+}
+.story-inner h2 span { color: var(--blue); }
+.story-inner p {
+  font-size: 16px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.9;
+  margin-bottom: 2rem;
+}
+
+/* ── SFEER BANNER ── */
+.sfeer-section {
+  position: relative;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sfeer-parallax {
+  position: absolute;
+  inset: -20%;
+  background: url('images/sfeer-bg.jpg') center/cover no-repeat;
+  will-change: transform;
+}
+.sfeer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10,10,10,0.7);
+}
+.sfeer-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.sfeer-content h2 {
+  font-family: Impact, sans-serif;
+  font-size: clamp(40px, 6vw, 80px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 0.5rem;
+}
+.sfeer-content h2 span { color: var(--blue); }
+.sfeer-content p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+/* ── USP GRID ── */
+.usp-section {
+  padding: 6rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.usp-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+.usp-item { text-align: center; }
+.usp-icon {
+  font-size: 32px;
+  margin-bottom: 1rem;
+  display: block;
+}
+.usp-title {
+  font-family: Impact, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+.usp-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-content { padding: 0 2rem; }
+  .products-section { padding: 5rem 1.5rem; }
+  .products-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .story-section { padding: 5rem 2rem; }
+  .usp-section { padding: 4rem 2rem; }
+  .usp-grid { grid-template-columns: repeat(2, 1fr); }
+  .sfeer-section { height: 300px; }
+}
+</style>
+</head>
+<body>
+
+<!-- STICKY BAR -->
+<div class="sticky-bar" id="sticky-bar" style="
+  position:fixed;top:0;left:0;right:0;z-index:1100;
+  background:rgba(10,10,10,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--blue);
+  padding:0 2rem;height:52px;
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;
+  transform:translateY(-100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+">
+  <span style="font-family:Impact,sans-serif;font-size:15px;letter-spacing:0.15em;color:var(--blue);">LIFT IQ</span>
+  <select id="sticky-select" style="background:var(--dark-3);border:1px solid var(--border);color:rgba(255,255,255,0.85);font-size:12px;padding:6px 10px;outline:none;flex:1;max-width:260px;">
+    <option value="preworkout" data-price="34.95">IGNITE Pre-Workout — €34,95</option>
+    <option value="straps" data-price="24.95">Lifting Straps PRO — €24,95</option>
+    <option value="sleeves" data-price="39.95">Knee Sleeves COMP X — €39,95</option>
+  </select>
+  <span id="sticky-price" style="font-family:Impact,sans-serif;font-size:18px;color:var(--blue);">€34,95</span>
+  <a href="bestellen.php" style="background:var(--blue);color:var(--dark);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:10px 20px;text-decoration:none;white-space:nowrap;">Bestel Nu</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="/" class="nav-logo">
+    <div class="nav-logo-mark">
+      <span class="nav-logo-name">LIFT IQ</span>
+      <span class="nav-logo-sub">Lift Smarter Every Day</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/" class="active">Home</a></li>
+    <li><a href="gear.html">Gear</a></li>
+    <li><a href="bestellen.php" class="nav-cta">Shop Nu</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="nav-mobile" id="nav-mobile">
+  <a href="/">Home</a>
+  <a href="gear.html">Gear</a>
+  <a href="bestellen.php">Shop Nu →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-parallax" id="hero-parallax"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">Premium Supplements &amp; Lifting Gear</div>
+    <h1 class="hero-headline reveal reveal-delay-1">LIFT<br><span>SMARTER</span><br>EVERY DAY</h1>
+    <div class="blue-line reveal reveal-delay-1"></div>
+    <p class="hero-sub reveal reveal-delay-2">Wetenschappelijk onderbouwde supplementen en premium lifting gear voor serieuze atleten. Geen bullshit. Alleen resultaat.</p>
+    <div class="hero-btns reveal reveal-delay-3">
+      <a href="bestellen.php" class="btn-blue">Shop Nu</a>
+      <a href="#producten" class="btn-outline">Bekijk Producten</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF MARQUEE -->
+<div class="proof-strip">
+  <div class="proof-track-wrap">
+    <div class="proof-track">
+      <div class="proof-item"><span>⚡</span> Gratis verzending v.a. €50</div>
+      <div class="proof-item"><span>🧪</span> Gecertificeerde ingrediënten</div>
+      <div class="proof-item"><span>💪</span> +2.400 tevreden klanten</div>
+      <div class="proof-item"><span>🚚</span> Verzending binnen 24 uur</div>
+      <div class="proof-item"><span>🔬</span> No proprietary blends</div>
+      <div class="proof-item"><span>⭐</span> 4.9/5 gemiddelde beoordeling</div>
+    </div>
+    <div class="proof-track" aria-hidden="true">
+      <div class="proof-item"><span>⚡</span> Gratis verzending v.a. €50</div>
+      <div class="proof-item"><span>🧪</span> Gecertificeerde ingrediënten</div>
+      <div class="proof-item"><span>💪</span> +2.400 tevreden klanten</div>
+      <div class="proof-item"><span>🚚</span> Verzending binnen 24 uur</div>
+      <div class="proof-item"><span>🔬</span> No proprietary blends</div>
+      <div class="proof-item"><span>⭐</span> 4.9/5 gemiddelde beoordeling</div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="producten">
+  <div class="products-header">
+    <div class="section-eyebrow reveal">Onze Producten</div>
+    <h2 class="reveal reveal-delay-1">BUILT TO<br><span style="color:var(--blue)">PERFORM</span></h2>
+    <div class="blue-line blue-line-center reveal reveal-delay-2"></div>
+  </div>
+  <div class="products-grid">
+
+    <!-- Pre-Workout -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="images/preworkout.jpg" alt="LIFT IQ IGNITE Pre-Workout" loading="lazy">
+        <span class="product-badge">Bestseller</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Supplementen</div>
+        <div class="product-name">IGNITE<br>Pre-Workout</div>
+        <p class="product-desc">200mg cafeïne, beta-alanine, citrulline malate. Transparante label, geen fillers. Maximale focus &amp; pump.</p>
+        <div class="product-footer">
+          <span class="product-price">€34,95</span>
+          <a href="bestellen.php" class="product-btn">Bestel</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lifting Straps -->
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="images/straps.jpg" alt="LIFT IQ Lifting Straps PRO" loading="lazy">
+        <span class="product-badge">PRO Series</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Lifting Gear</div>
+        <div class="product-name">LIFTING<br>STRAPS PRO</div>
+        <p class="product-desc">Volkorenleer met versterkte naad. Maximale grip bij deadlifts, rows en pull-oefeningen. One size fits all.</p>
+        <div class="product-footer">
+          <span class="product-price">€24,95</span>
+          <a href="bestellen.php" class="product-btn">Bestel</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Knee Sleeves -->
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="images/sleeves.jpg" alt="LIFT IQ Knee Sleeves Compression X" loading="lazy">
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Lifting Gear</div>
+        <div class="product-name">COMPRESSION X<br>Knee Sleeves</div>
+        <p class="product-desc">7mm neopreen, IPF-goedgekeurd. Maximale kniestabiliteit en warmtebehoud voor squat &amp; leg day.</p>
+        <div class="product-footer">
+          <span class="product-price">€39,95</span>
+          <a href="bestellen.php" class="product-btn">Bestel</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-section">
+  <div class="story-inner">
+    <div class="section-eyebrow reveal">Ons Verhaal</div>
+    <h2 class="reveal reveal-delay-1">GEEN HYPE.<br><span>ALLEEN</span> RESULTAAT.</h2>
+    <div class="blue-line reveal reveal-delay-1"></div>
+    <p class="reveal reveal-delay-2">LIFT IQ is opgericht door lifters, voor lifters. Zat van de supplementen vol fillers en gear die na drie maanden uit elkaar valt. Wij geloven in transparante labels, eerlijke prijzen en producten die het verschil maken in de gym.</p>
+    <p class="reveal reveal-delay-2">Elk product is getest. Elke ingrediënt verantwoord. Geen eigen blends die dosering verbergen — alleen wat werkt, in de juiste dosering.</p>
+    <div class="reveal reveal-delay-3">
+      <a href="bestellen.php" class="btn-blue">Shop de Collectie</a>
+    </div>
+  </div>
+</section>
+
+<!-- SFEER BANNER -->
+<div class="sfeer-section">
+  <div class="sfeer-parallax" id="sfeer-parallax"></div>
+  <div class="sfeer-overlay"></div>
+  <div class="sfeer-content reveal">
+    <h2>TRAIN <span>HARDER</span><br>RECOVER SMARTER</h2>
+    <p>Lift Smarter Every Day</p>
+  </div>
+</div>
+
+<!-- USP -->
+<section class="usp-section">
+  <div class="usp-grid">
+    <div class="usp-item reveal">
+      <span class="usp-icon">🔬</span>
+      <div class="usp-title">Transparante Label</div>
+      <p class="usp-desc">Elke dosis zichtbaar. Geen proprietary blends, geen verborgen fillers.</p>
+    </div>
+    <div class="usp-item reveal reveal-delay-1">
+      <span class="usp-icon">🏭</span>
+      <div class="usp-title">GMP Gecertificeerd</div>
+      <p class="usp-desc">Geproduceerd in GMP-gecertificeerde faciliteiten. Kwaliteit gegarandeerd.</p>
+    </div>
+    <div class="usp-item reveal reveal-delay-2">
+      <span class="usp-icon">🚚</span>
+      <div class="usp-title">Snelle Levering</div>
+      <p class="usp-desc">Besteld voor 15:00 uur? Morgen in huis. Gratis verzending v.a. €50.</p>
+    </div>
+    <div class="usp-item reveal reveal-delay-3">
+      <span class="usp-icon">💪</span>
+      <div class="usp-title">Lifetime Garantie</div>
+      <p class="usp-desc">Alle gear met lifetime garantie. Supplementen: niet tevreden, geld terug.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div>
+    <div class="footer-logo">LIFT IQ</div>
+    <div class="footer-tagline">Lift Smarter Every Day</div>
+  </div>
+  <div>
+    <div class="footer-col-title">Navigatie</div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="gear.html">Gear</a></li>
+      <li><a href="bestellen.php">Shop Nu</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <div class="footer-info">
+      <a href="mailto:info@lift-supplements.nl">info@lift-supplements.nl</a><br>
+      lift-supplements.nl
+    </div>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 LIFT IQ · lift-supplements.nl</span>
+  <span>Lift Smarter Every Day.</span>
+</div>
+
+<script>
+const nav = document.getElementById('nav');
+const stickyBar = document.getElementById('sticky-bar');
+const heroParallax = document.getElementById('hero-parallax');
+const sfeerParallax = document.getElementById('sfeer-parallax');
+
+function onScroll() {
+  const y = window.scrollY;
+  if (y > 60) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+
+  if (y > window.innerHeight * 0.6) stickyBar.style.transform = 'translateY(0)';
+  else stickyBar.style.transform = 'translateY(-100%)';
+
+  if (heroParallax) heroParallax.style.transform = `translateY(${y * 0.3}px)`;
+  if (sfeerParallax) {
+    const rect = sfeerParallax.closest('.sfeer-section').getBoundingClientRect();
+    sfeerParallax.style.transform = `translateY(${-rect.top * 0.2}px)`;
+  }
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+
+// Hamburger
+const hamburger = document.getElementById('hamburger');
+const navMobile = document.getElementById('nav-mobile');
+hamburger.addEventListener('click', () => navMobile.classList.toggle('open'));
+document.addEventListener('click', e => {
+  if (!nav.contains(e.target) && !navMobile.contains(e.target)) navMobile.classList.remove('open');
+});
+
+// Sticky price update
+const stickySelect = document.getElementById('sticky-select');
+const stickyPrice = document.getElementById('sticky-price');
+function updatePrice() {
+  const opt = stickySelect.options[stickySelect.selectedIndex];
+  stickyPrice.textContent = '€' + parseFloat(opt.dataset.price).toFixed(2).replace('.', ',');
+}
+stickySelect.addEventListener('change', updatePrice);
+
+// 3D card tilt
+document.querySelectorAll('.product-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateZ(8px)`;
+  });
+  card.addEventListener('mouseleave', () => card.style.transform = '');
+});
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
