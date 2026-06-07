@@ -179,10 +179,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <nav class="nav scrolled" id="nav">
   <a href="/" class="nav-logo">
-    <div class="nav-logo-mark">
-      <span class="nav-logo-name">LIFT IQ</span>
-      <span class="nav-logo-sub">Lift Smarter Every Day</span>
-    </div>
+    <img src="images/liftiq-logo-white.png" class="nav-logo-img" alt="LIFTIQ — Lift Smarter Every Day">
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
@@ -373,7 +370,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!-- FOOTER -->
 <footer class="footer">
   <div>
-    <div class="footer-logo">LIFT IQ</div>
+    <img src="images/liftiq-logo-white.png" class="footer-logo-img" alt="LIFTIQ" style="height:38px;width:auto;display:block;margin-bottom:10px;">
     <div class="footer-tagline">Lift Smarter Every Day</div>
   </div>
   <div>
