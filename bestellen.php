@@ -20,13 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $producten = [
-        'preworkout_blue' => ['naam' => 'Pre-Workout Blueberry',                          'prijs' => 34.95],
-        'preworkout_red'  => ['naam' => 'Pre-Workout Strawberry Kiwi',                    'prijs' => 34.95],
-        'preworkout_gold' => ['naam' => 'Pre-Workout Tropical (cafeïnevrij)',             'prijs' => 34.95],
-        'straps'          => ['naam' => 'Lifting Straps PRO',                             'prijs' => 24.95],
-        'sleeves_s'       => ['naam' => 'Knee Sleeves COMP X — S/M',                      'prijs' => 39.95],
-        'sleeves_l'       => ['naam' => 'Knee Sleeves COMP X — L/XL',                     'prijs' => 39.95],
-        'bundle_1'        => ['naam' => 'Starter Bundle (Pre-Workout + Straps)',          'prijs' => 54.95],
+        'preworkout_blue' => ['naam' => 'Pre-Workout Blueberry',              'prijs' => 34.95],
+        'preworkout_red'  => ['naam' => 'Pre-Workout Strawberry Kiwi',        'prijs' => 34.95],
+        'preworkout_gold' => ['naam' => 'Pre-Workout Tropical (cafeïnevrij)', 'prijs' => 34.95],
+        'shaker'          => ['naam' => 'Shakebeker LIFTIQ',                  'prijs' => 12.95],
     ];
 
     $bestelling = $_POST['bestelling'] ?? [];
@@ -261,44 +258,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">Lifting Straps PRO</div>
-            <div class="product-item-price">€24,95</div>
+            <div class="product-item-name">Shakebeker LIFTIQ</div>
+            <div class="product-item-price">€12,95</div>
           </div>
           <div class="product-item-qty">
-            <select name="bestelling[straps]" class="qty-select" data-price="24.95">
-              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
-            </select>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-item-info">
-            <div class="product-item-name">Knee Sleeves COMP X — S/M</div>
-            <div class="product-item-price">€39,95</div>
-          </div>
-          <div class="product-item-qty">
-            <select name="bestelling[sleeves_s]" class="qty-select" data-price="39.95">
-              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
-            </select>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-item-info">
-            <div class="product-item-name">Knee Sleeves COMP X — L/XL</div>
-            <div class="product-item-price">€39,95</div>
-          </div>
-          <div class="product-item-qty">
-            <select name="bestelling[sleeves_l]" class="qty-select" data-price="39.95">
-              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
-            </select>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-item-info">
-            <div class="product-item-name">Starter Bundle — Pre-Workout + Straps</div>
-            <div class="product-item-price">€54,95 <span style="font-size:10px;color:var(--text-muted)">(bespaar €4,95)</span></div>
-          </div>
-          <div class="product-item-qty">
-            <select name="bestelling[bundle_1]" class="qty-select" data-price="54.95">
+            <select name="bestelling[shaker]" class="qty-select" data-price="12.95">
               <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
             </select>
           </div>
