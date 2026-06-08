@@ -15,5 +15,5 @@ define('SENDCLOUD_SECRET_KEY', 'VERVANG_MET_SECRET_KEY');
 // --- Site ---
 // Basis-URL van de webshop, zonder slash op het eind.
 // Wordt gebruikt voor de Mollie redirect- en webhook-URL.
-define('SITE_URL', 'https://liftiq-supplement.nl');
+define('SITE_URL', 'https://liftiqgear.nl');
 ?>

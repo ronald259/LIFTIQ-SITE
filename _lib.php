@@ -10,7 +10,7 @@ if (!defined('LIFTIQ_LIB')) {
 define('LIFTIQ_LIB', true);
 
 if (!defined('SITE_URL')) {
-    define('SITE_URL', 'https://liftiq-supplement.nl');
+    define('SITE_URL', 'https://liftiqgear.nl');
 }
 
 /**

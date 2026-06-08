@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: ' . $betaling['data']['_links']['checkout']['href']);
             exit;
         } else {
-            $errors[] = 'Betaling kon niet worden aangemaakt. Probeer opnieuw of mail info@liftiq-supplement.nl';
+            $errors[] = 'Betaling kon niet worden aangemaakt. Probeer opnieuw of mail info@liftiqgear.nl';
         }
     }
 }
@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shop — LIFT IQ</title>
 <meta name="description" content="Bestel LIFT IQ supplementen en lifting gear. Snelle levering, gratis verzending v.a. €50.">
-<link rel="canonical" href="https://liftiq-supplement.nl/bestellen.php">
+<link rel="canonical" href="https://liftiqgear.nl/bestellen.php">
 <link rel="stylesheet" href="style.css">
 <style>
 .page-hero {
@@ -358,12 +358,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div>
     <div class="footer-col-title">Contact</div>
     <div class="footer-info">
-      <a href="mailto:info@liftiq-supplement.nl">info@liftiq-supplement.nl</a>
+      <a href="mailto:info@liftiqgear.nl">info@liftiqgear.nl</a>
     </div>
   </div>
 </footer>
 <div class="footer-bottom">
-  <span>© 2026 LIFT IQ · liftiq-supplement.nl</span>
+  <span>© 2026 LIFT IQ · liftiqgear.nl</span>
   <span>Lift Smarter Every Day.</span>
 </div>
 
