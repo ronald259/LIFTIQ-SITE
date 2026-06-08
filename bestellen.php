@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/_lib.php';
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $naam     = trim($_POST['naam'] ?? '');
@@ -20,19 +21,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $producten = [
-        'preworkout_blue' => ['naam' => 'Pre-Workout Blueberry',              'prijs' => 34.95],
-        'preworkout_red'  => ['naam' => 'Pre-Workout Strawberry Kiwi',        'prijs' => 34.95],
-        'preworkout_gold' => ['naam' => 'Pre-Workout Tropical (cafeïnevrij)', 'prijs' => 34.95],
-        'shaker'          => ['naam' => 'Shakebeker LIFTIQ',                  'prijs' => 12.95],
+        'preworkout_blue' => ['naam' => 'Pre-Workout Blueberry',              'prijs' => 34.95, 'gewicht' => 0.500],
+        'preworkout_red'  => ['naam' => 'Pre-Workout Strawberry Kiwi',        'prijs' => 34.95, 'gewicht' => 0.500],
+        'preworkout_gold' => ['naam' => 'Pre-Workout Tropical (cafeïnevrij)', 'prijs' => 34.95, 'gewicht' => 0.500],
+        'shaker'          => ['naam' => 'Shakebeker LIFTIQ',                  'prijs' => 12.95, 'gewicht' => 0.200],
     ];
 
     $bestelling = $_POST['bestelling'] ?? [];
-    $totaal = 0;
-    $regels = [];
+    $totaal  = 0;
+    $gewicht = 0;
+    $regels  = [];
     foreach ($bestelling as $id => $aantal) {
         $aantal = (int)$aantal;
         if ($aantal > 0 && isset($producten[$id])) {
-            $totaal += $producten[$id]['prijs'] * $aantal;
+            $totaal  += $producten[$id]['prijs']   * $aantal;
+            $gewicht += $producten[$id]['gewicht'] * $aantal;
             $regels[] = $aantal . 'x ' . $producten[$id]['naam'];
         }
     }
@@ -52,30 +55,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $data = [
             'amount'      => ['currency' => 'EUR', 'value' => number_format($totaal, 2, '.', '')],
             'description' => 'LIFT IQ — ' . implode(', ', $regels),
-            'redirectUrl' => 'https://liftiq-supplement.nl/bedankt.html',
-            'webhookUrl'  => 'https://liftiq-supplement.nl/webhook.php',
+            'redirectUrl' => SITE_URL . '/bedankt.html',
+            'webhookUrl'  => SITE_URL . '/webhook.php',
             'metadata'    => [
-                'naam'      => $naam,
-                'email'     => $email,
-                'telefoon'  => $telefoon,
-                'levering'  => $levering_info,
-                'bestelling'=> implode(', ', $regels),
-            ]
+                'naam'          => $naam,
+                'email'         => $email,
+                'telefoon'      => $telefoon,
+                'levering'      => $levering,        // machinewaarde: verzenden | afhalen
+                'levering_info' => $levering_info,   // leesbaar
+                'adres'         => $adres,
+                'postcode'      => $postcode,
+                'stad'          => $stad,
+                'land'          => 'NL',
+                'gewicht'       => number_format($gewicht, 3, '.', ''),
+                'bestelling'    => implode(', ', $regels),
+            ],
         ];
-        $ch = curl_init('https://api.mollie.com/v2/payments');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/json',
-            'Authorization: Bearer ' . MOLLIE_API_KEY
-        ]);
-        $response = curl_exec($ch);
-        $code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-        $result = json_decode($response, true);
-        if ($code === 201 && isset($result['_links']['checkout']['href'])) {
-            header('Location: ' . $result['_links']['checkout']['href']);
+        $betaling = mollie_create_payment($data);
+        if ($betaling['code'] === 201 && isset($betaling['data']['_links']['checkout']['href'])) {
+            header('Location: ' . $betaling['data']['_links']['checkout']['href']);
             exit;
         } else {
             $errors[] = 'Betaling kon niet worden aangemaakt. Probeer opnieuw of mail info@liftiq-supplement.nl';

@@ -1,0 +1,4 @@
+# Houd de map in Git, maar negeer de logbestanden zelf.
+*
+!.htaccess
+!.gitignore

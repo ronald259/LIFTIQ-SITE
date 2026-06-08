@@ -1,0 +1,15 @@
+# LIFTIQ webshop — Apache-config (Strato)
+
+# Bescherm gevoelige bestanden tegen rechtstreeks opvragen via de browser.
+# (PHP-includes en geheime sleutels mogen nooit als bron uitgeleverd worden.)
+<IfModule mod_authz_core.c>
+    <FilesMatch "(^config\.php$|^_lib\.php$|\.log$|^\.gitignore$|^config\.php\.example$)">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+<IfModule !mod_authz_core.c>
+    <FilesMatch "(^config\.php$|^_lib\.php$|\.log$|^\.gitignore$|^config\.php\.example$)">
+        Order allow,deny
+        Deny from all
+    </FilesMatch>
+</IfModule>

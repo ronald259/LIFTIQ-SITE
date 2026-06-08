@@ -1,6 +1,19 @@
 <?php
-// Kopieer dit bestand naar config.php en vul je Mollie live API key in
+// Kopieer dit bestand naar config.php en vul je eigen sleutels in.
+// LET OP: config.php staat in .gitignore en wordt NOOIT gecommit.
+
+// --- Mollie (betalingen) ---
 // Haal op via: https://my.mollie.com/dashboard/developers/api-keys
-// LET OP: config.php staat in .gitignore en wordt NOOIT gecommit
 define('MOLLIE_API_KEY', 'live_VERVANG_MET_JOUW_KEY');
+
+// --- SendCloud (verzending / labels) ---
+// Haal op via: SendCloud-paneel -> Instellingen -> Integraties -> Sendcloud API
+// Kopieer daar de "Public key" en de "Secret key".
+define('SENDCLOUD_PUBLIC_KEY', 'VERVANG_MET_PUBLIC_KEY');
+define('SENDCLOUD_SECRET_KEY', 'VERVANG_MET_SECRET_KEY');
+
+// --- Site ---
+// Basis-URL van de webshop, zonder slash op het eind.
+// Wordt gebruikt voor de Mollie redirect- en webhook-URL.
+define('SITE_URL', 'https://liftiq-supplement.nl');
 ?>
