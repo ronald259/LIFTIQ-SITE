@@ -4,3 +4,6 @@ config.php
 # macOS / OS junk
 .DS_Store
 __MACOSX/
+
+# Build-artifact (uploadpakket)
+liftiqgear-strato.zip
