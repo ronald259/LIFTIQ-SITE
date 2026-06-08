@@ -634,6 +634,9 @@
   .sfeer-section { height: 300px; }
 }
 
+/* ── Supplementen-band (support-laag, subtiel afwijkende achtergrond) ── */
+.support-band { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
 /* ── MOBIEL: hero ── */
 @media (max-width: 700px) {
   /* Parallax uit op mobiel (geen gaten/schokken), onderwerp goed in beeld */
@@ -757,82 +760,15 @@
   </div>
 </section>
 
-<!-- PRODUCTS -->
-<section class="products-section" id="producten">
+<!-- TRAINING GEAR -->
+<section class="products-section" id="gear">
   <div class="products-header">
-    <div class="section-eyebrow reveal">Ons Assortiment</div>
+    <div class="section-eyebrow reveal">Training Gear</div>
     <h2 class="reveal reveal-delay-1">BUILT TO<br><span style="color:var(--blue)">PERFORM</span></h2>
     <div class="blue-line blue-line-center reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="max-width:620px;margin:1.25rem auto 0;color:var(--text-muted);font-size:14px;line-height:1.8;">Bij zware lifts telt elk detail — je grip, je brace, je knieën, je focus. LIFTIQ selecteert gear die je helpt stabieler, sterker en met meer controle te trainen.</p>
   </div>
   <div class="products-grid">
-
-    <!-- Pre-Workout — Blueberry (blauw) -->
-    <div class="product-card reveal">
-      <div class="product-img-wrap">
-        <img src="images/preworkout-blue.jpg" alt="LIFTIQ Pre-Workout — Blueberry" loading="lazy">
-        <span class="product-badge">Bestseller</span>
-      </div>
-      <div class="product-body">
-        <div class="product-cat">Pre-Workout · Smaak</div>
-        <div class="product-name">PRE-WORKOUT<br>Blueberry</div>
-        <p class="product-desc">Frisse blueberry-smaak. Optimaal gedoseerd met hoogwaardige ingrediënten voor maximale focus, energie en pump — direct merkbaar in je training.</p>
-        <div class="product-footer">
-          <span class="product-price">€34,95</span>
-          <a href="bestellen.php" class="product-btn">Bestel</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pre-Workout — Strawberry Kiwi (rood/roze) -->
-    <div class="product-card reveal reveal-delay-1">
-      <div class="product-img-wrap">
-        <img src="images/preworkout-red.jpg" alt="LIFTIQ Pre-Workout — Strawberry Kiwi" loading="lazy">
-        <span class="product-badge">Nieuw</span>
-      </div>
-      <div class="product-body">
-        <div class="product-cat">Pre-Workout · Smaak</div>
-        <div class="product-name">PRE-WORKOUT<br>Strawberry Kiwi</div>
-        <p class="product-desc">Zoete aardbei-kiwi. Volwaardig gedoseerd voor explosieve energie, scherpe focus en een serieuze pump bij elke set.</p>
-        <div class="product-footer">
-          <span class="product-price">€34,95</span>
-          <a href="bestellen.php" class="product-btn">Bestel</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Pre-Workout — Tropical (cafeïnevrij, goud) -->
-    <div class="product-card reveal reveal-delay-2">
-      <div class="product-img-wrap">
-        <img src="images/preworkout-gold.jpg" alt="LIFTIQ Pre-Workout — Tropical, cafeïnevrij" loading="lazy">
-        <span class="product-badge">Cafeïnevrij</span>
-      </div>
-      <div class="product-body">
-        <div class="product-cat">Pre-Workout · Smaak</div>
-        <div class="product-name">PRE-WORKOUT<br>Tropical</div>
-        <p class="product-desc">Tropische mix, volledig cafeïnevrij. Pump en focus zonder de cafeïne — ook ideaal voor wie 's avonds traint of gevoelig is voor stimulanten.</p>
-        <div class="product-footer">
-          <span class="product-price">€34,95</span>
-          <a href="bestellen.php" class="product-btn">Bestel</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Shakebeker LIFTIQ -->
-    <div class="product-card reveal reveal-delay-1">
-      <div class="product-img-wrap">
-        <img src="images/shaker.jpg" alt="Shakebeker LIFTIQ" loading="lazy">
-        <span class="product-badge">Accessoire</span>
-      </div>
-      <div class="product-body">
-        <div class="product-cat">Accessoires</div>
-        <div class="product-name">SHAKEBEKER<br>LIFTIQ</div>
-        <p class="product-desc">Premium LIFTIQ shakebeker met cyan accent. Lekvrij en stevig — de perfecte mix voor je pre-workout, overal mee naartoe.</p>
-        <div class="product-footer">
-          <span class="product-price">€12,95</span>
-          <a href="bestellen.php" class="product-btn">Bestel</a>
-        </div>
-      </div>
-    </div>
 
     <!-- Lifting Straps -->
     <div class="product-card reveal reveal-delay-2" id="straps">
@@ -885,19 +821,110 @@
       </div>
     </div>
 
+    <!-- Lifting Belt — placeholder -->
+    <div class="product-card reveal" id="belts">
+      <div class="product-img-wrap" style="background:radial-gradient(ellipse at 50% 40%, #242424 0%, #141414 60%, #0c0c0c 100%);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:Impact,sans-serif;font-size:34px;letter-spacing:0.14em;color:rgba(0,207,255,0.22);text-transform:uppercase;">Belts</span>
+        <span class="product-badge" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);">Binnenkort</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Training Gear · Brace</div>
+        <div class="product-name">LIFTING<br>BELT</div>
+        <p class="product-desc">Stevige powerlifting-riem voor maximale core-bracing en stabiliteit onder zware squats en deadlifts.</p>
+        <div class="product-footer">
+          <span class="product-price" style="color:var(--text-muted);font-size:18px;">Binnenkort</span>
+          <span class="product-btn" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);cursor:default;">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- STORY -->
-<section class="story-section">
+<!-- SUPPLEMENTS (support) -->
+<section class="products-section support-band" id="supplements">
+  <div class="products-header">
+    <div class="section-eyebrow reveal">Supplements · Support your training</div>
+    <h2 class="reveal reveal-delay-1">FUEL YOUR<br><span style="color:var(--blue)">SESSIONS</span></h2>
+    <div class="blue-line blue-line-center reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="max-width:620px;margin:1.25rem auto 0;color:var(--text-muted);font-size:14px;line-height:1.8;">Geen hoofdzaak, wél de extra laag. Onze Pre Lift 1 pre-workout geeft je de focus en energie om elke zware sessie vol aan te gaan.</p>
+  </div>
+  <div class="products-grid">
+
+    <!-- Pre Lift 1 — Blueberry -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="images/preworkout-blue.jpg" alt="LIFTIQ Pre Lift 1 — Blueberry" loading="lazy">
+        <span class="product-badge">Bestseller</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Pre-Workout · Blueberry</div>
+        <div class="product-name">PRE LIFT 1<br>Blueberry</div>
+        <p class="product-desc">Volwaardig gedoseerd voor scherpe focus, energie en pump. De brandstof onder je zwaarste sets.</p>
+        <div class="product-footer">
+          <span class="product-price">€34,95</span>
+          <a href="bestellen.php" class="product-btn">Bestel</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pre Lift 1 — Strawberry Kiwi -->
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="images/preworkout-red.jpg" alt="LIFTIQ Pre Lift 1 — Strawberry Kiwi" loading="lazy">
+        <span class="product-badge">Nieuw</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Pre-Workout · Strawberry Kiwi</div>
+        <div class="product-name">PRE LIFT 1<br>Strawberry Kiwi</div>
+        <p class="product-desc">Zoete aardbei-kiwi. Explosieve energie en focus voor elke training, zonder concessies aan dosering.</p>
+        <div class="product-footer">
+          <span class="product-price">€34,95</span>
+          <a href="bestellen.php" class="product-btn">Bestel</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pre Lift 1 — Tropical (cafeïnevrij) -->
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="images/preworkout-gold.jpg" alt="LIFTIQ Pre Lift 1 — Tropical, cafeïnevrij" loading="lazy">
+        <span class="product-badge">Cafeïnevrij</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Pre-Workout · Tropical</div>
+        <div class="product-name">PRE LIFT 1<br>Tropical</div>
+        <p class="product-desc">Volledig cafeïnevrij. Focus en pump zonder stimulanten — ideaal voor avondtraining of cafeïnegevoeligheid.</p>
+        <div class="product-footer">
+          <span class="product-price">€34,95</span>
+          <a href="bestellen.php" class="product-btn">Bestel</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUNDLES -->
+<section class="cta-section" id="bundles">
+  <div class="cta-inner">
+    <div class="section-eyebrow reveal">Bundles</div>
+    <h2 class="reveal">GEAR + FUEL<br><span>BUNDELS</span></h2>
+    <p class="reveal reveal-delay-1">Binnenkort: complete sets met gear én supplementen, scherper geprijsd dan los. Schrijf je in voor de nieuwsbrief en wees als eerste op de hoogte.</p>
+    <div class="reveal reveal-delay-2"><a href="#" class="btn-outline" style="cursor:default;opacity:0.7;">Binnenkort</a></div>
+  </div>
+</section>
+
+<!-- ABOUT / DUSTIN -->
+<section class="story-section" id="about">
   <div class="story-inner">
-    <div class="section-eyebrow reveal">Ons Verhaal</div>
-    <h2 class="reveal reveal-delay-1">WAAROM DEZE<br><span>PRE-WORKOUT?</span></h2>
+    <div class="section-eyebrow reveal">Dustin's selectie</div>
+    <h2 class="reveal reveal-delay-1">GEAR DIE<br><span>MEE LIFT</span></h2>
     <div class="blue-line reveal reveal-delay-1"></div>
-    <p class="reveal reveal-delay-2">Ik ben dit merk begonnen nadat ik besloot te stoppen met school. In mijn omgeving had ik veel contact met sporters en daardoor zag ik van dichtbij hoe teleurgesteld veel mensen waren in de huidige pre-workouts op de markt. Veel bekende merken zijn laag gedoseerd, werken nauwelijks en hebben tóch een absurd hoge prijs.</p>
-    <p class="reveal reveal-delay-2">Dat motiveerde mij om zelf een pre-workout te ontwikkelen die wél doet wat hij moet doen.</p>
+    <p class="reveal reveal-delay-2">LIFTIQ is opgezet door Dustin — lifter, geen marketeer. Hij zag te veel sporters worstelen met gear die niet doet wat het belooft: straps die wegglijden, sleeves zonder steun, riemen die niet bracen.</p>
+    <p class="reveal reveal-delay-2">Daarom selecteert hij elk item op één vraag: helpt dit je om sterker, stabieler en met meer vertrouwen te trainen? Alleen gear die dat waarmaakt, draagt het LIFTIQ-logo.</p>
     <div class="reveal reveal-delay-3">
-      <a href="bestellen.php" class="btn-blue">Meer over Liftiq</a>
+      <a href="#gear" class="btn-blue">Shop de selectie</a>
     </div>
   </div>
 </section>
@@ -981,28 +1008,32 @@
   </div>
 </section>
 
-<!-- USP -->
+<!-- WAAROM GEAR -->
 <section class="usp-section">
+  <div class="products-header" style="margin-bottom:3rem;">
+    <div class="section-eyebrow reveal">Waarom gear</div>
+    <h2 class="reveal reveal-delay-1" style="font-family:Impact,sans-serif;font-size:clamp(28px,4vw,48px);letter-spacing:0.05em;text-transform:uppercase;">GOEDE GEAR <span style="color:var(--blue)">VERBETERT JE LIFT</span></h2>
+  </div>
   <div class="usp-grid">
     <div class="usp-item reveal">
-      <span class="usp-icon">🧪</span>
-      <div class="usp-title">Hoogwaardig</div>
-      <p class="usp-desc">Ontwikkeld met hoogwaardige ingrediënten volgens strikte kwaliteitsnormen.</p>
+      <span class="usp-icon">✊</span>
+      <div class="usp-title">Maximale grip</div>
+      <p class="usp-desc">Houd de stang vast als je onderarmen het opgeven. Meer reps en zwaardere pulls.</p>
     </div>
     <div class="usp-item reveal reveal-delay-1">
-      <span class="usp-icon">⚖️</span>
-      <div class="usp-title">Optimaal Gedoseerd</div>
-      <p class="usp-desc">Volwaardige dosering die echt werkt. Geen onderdosering, geen verborgen fillers.</p>
+      <span class="usp-icon">🛡️</span>
+      <div class="usp-title">Meer stabiliteit</div>
+      <p class="usp-desc">Sleeves en belt geven je knieën en core de steun voor zware squats en deadlifts.</p>
     </div>
     <div class="usp-item reveal reveal-delay-2">
-      <span class="usp-icon">🇳🇱</span>
-      <div class="usp-title">Uit Nederland</div>
-      <p class="usp-desc">Veilig verzonden vanuit Nederland, zodat je altijd weet wat je binnenkrijgt.</p>
+      <span class="usp-icon">🎯</span>
+      <div class="usp-title">Betere controle</div>
+      <p class="usp-desc">Wraps en straps zorgen voor een vaste, voorspelbare verbinding met het gewicht.</p>
     </div>
     <div class="usp-item reveal reveal-delay-3">
-      <span class="usp-icon">💪</span>
-      <div class="usp-title">Scherp Geprijsd</div>
-      <p class="usp-desc">Premium kwaliteit zonder de absurde prijs van de bekende merken.</p>
+      <span class="usp-icon">🎧</span>
+      <div class="usp-title">Minder afleiding</div>
+      <p class="usp-desc">Geen gedoe met je greep of gewrichten — al je focus gaat naar de lift.</p>
     </div>
   </div>
 </section>
@@ -1010,12 +1041,12 @@
 <!-- CLOSING CTA -->
 <section class="cta-section">
   <div class="cta-inner">
-    <h2 class="reveal">ERVAAR HET VERSCHIL<br><span>VANDAAG NOG</span></h2>
-    <p class="reveal reveal-delay-1">Ons premium supplement ondersteunt jouw energie en herstel. Bestel nu en begin meteen met een betere routine.</p>
+    <h2 class="reveal">GEAR UP<br><span>EN LIFT SLIMMER</span></h2>
+    <p class="reveal reveal-delay-1">Premium fitness gear voor serieuze lifters — meer grip, meer stabiliteit, meer controle. Klaar om sterker te trainen?</p>
     <div class="reveal reveal-delay-2">
-      <a href="bestellen.php" class="btn-blue">Koop Nu</a>
+      <a href="#gear" class="btn-blue">Shop training gear</a>
     </div>
-    <p class="cta-fineprint reveal reveal-delay-3">Onze producten worden ontwikkeld volgens strikte kwaliteitsnormen en veilig verzonden vanuit Nederland, zodat jij altijd weet wat je binnenkrijgt.</p>
+    <p class="cta-fineprint reveal reveal-delay-3">Premium gear &amp; supplementen, zorgvuldig geselecteerd en veilig verzonden vanuit Nederland.</p>
   </div>
 </section>
 
