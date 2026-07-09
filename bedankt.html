@@ -64,5 +64,9 @@ body { display: flex; flex-direction: column; min-height: 100vh; }
   <span>© 2026 LIFT IQ · liftiqgear.nl</span>
   <span>Lift Smarter Every Day.</span>
 </div>
+<script>
+  // Bestelling gelukt → winkelmand legen.
+  try { localStorage.removeItem('liftiq_cart'); } catch (e) {}
+</script>
 </body>
 </html>

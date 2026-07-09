@@ -475,6 +475,15 @@ document.getElementById('upsell-grid').addEventListener('click', e => {
   if (sel) { if (parseInt(sel.value) === 0) sel.value = '1'; updateTotaal(); }
 });
 
+// Winkelmand van de homepage overnemen (localStorage) en de aantallen invullen.
+try {
+  const cart = JSON.parse(localStorage.getItem('liftiq_cart') || '{}');
+  Object.keys(cart).forEach(id => {
+    const sel = document.querySelector('.qty-select[data-id="' + id + '"]');
+    if (sel) { const q = Math.max(0, Math.min(5, parseInt(cart[id]) || 0)); if (q > 0) sel.value = String(q); }
+  });
+} catch (e) {}
+
 document.querySelectorAll('.qty-select').forEach(s => s.addEventListener('change', updateTotaal));
 document.querySelectorAll('input[name="levering"]').forEach(r => r.addEventListener('change', updateTotaal));
 updateTotaal();
