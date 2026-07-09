@@ -634,6 +634,12 @@
   .sfeer-section { height: 300px; }
 }
 
+/* ── Bundles ── */
+.bundle-banner { position:relative; max-width:1100px; margin:0 auto 2.5rem; aspect-ratio:16/6; border:1px solid var(--border-strong); overflow:hidden; background:radial-gradient(ellipse at 50% 40%, #1c2b33, #0d0d0d 70%); display:flex; align-items:center; justify-content:center; }
+.bundle-banner img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.bundle-banner .bb-text { position:relative; z-index:2; font-family:Impact,sans-serif; font-size:clamp(28px,5vw,54px); letter-spacing:0.1em; text-transform:uppercase; color:var(--white); text-align:center; }
+.bundle-banner .bb-text span { color:var(--blue); }
+
 /* ── Supplementen-band (support-laag, subtiel afwijkende achtergrond) ── */
 .support-band { background: var(--dark-2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 
@@ -906,12 +912,72 @@
 </section>
 
 <!-- BUNDLES -->
-<section class="cta-section" id="bundles">
-  <div class="cta-inner">
-    <div class="section-eyebrow reveal">Bundles</div>
-    <h2 class="reveal">GEAR + FUEL<br><span>BUNDELS</span></h2>
-    <p class="reveal reveal-delay-1">Binnenkort: complete sets met gear én supplementen, scherper geprijsd dan los. Schrijf je in voor de nieuwsbrief en wees als eerste op de hoogte.</p>
-    <div class="reveal reveal-delay-2"><a href="#" class="btn-outline" style="cursor:default;opacity:0.7;">Binnenkort</a></div>
+<section class="products-section" id="bundles">
+  <div class="products-header">
+    <div class="section-eyebrow reveal">Bundles · Meer gear, minder betalen</div>
+    <h2 class="reveal reveal-delay-1">BUNDLE <span style="color:var(--blue)">DEALS</span></h2>
+    <div class="blue-line blue-line-center reveal reveal-delay-2"></div>
+    <p class="reveal reveal-delay-2" style="max-width:620px;margin:1.25rem auto 0;color:var(--text-muted);font-size:14px;line-height:1.8;">Complete sets gear — en gear + fuel — scherper geprijsd dan los. Alles om sterker te trainen, in één keer binnen.</p>
+  </div>
+
+  <div class="bundle-banner reveal">
+    <img src="images/bundle.jpg" alt="LIFTIQ gear bundle" loading="lazy" onerror="this.style.display='none'">
+    <div class="bb-text">GEAR UP <span>ALL-IN</span></div>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Starter Bundle -->
+    <div class="product-card reveal">
+      <div class="product-img-wrap">
+        <img src="images/straps.jpg" alt="LIFTIQ Starter Bundle" loading="lazy">
+        <span class="product-badge">Bespaar 10%</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Bundle · Grip</div>
+        <div class="product-name">STARTER<br>BUNDLE</div>
+        <p class="product-desc">Lifting Straps + Wrist Wraps. Grip en polssteun voor je pulls én je pushes — de basis voor elke serieuze lifter.</p>
+        <div class="product-footer">
+          <span class="product-price" style="color:var(--text-muted);font-size:18px;">Binnenkort</span>
+          <span class="product-btn" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);cursor:default;">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Complete Lifter Bundle -->
+    <div class="product-card reveal reveal-delay-1">
+      <div class="product-img-wrap">
+        <img src="images/sleeves.jpg" alt="LIFTIQ Complete Lifter Bundle" loading="lazy">
+        <span class="product-badge">Bespaar 15%</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Bundle · Compleet</div>
+        <div class="product-name">COMPLETE<br>LIFTER</div>
+        <p class="product-desc">Straps + Wraps + Knee Sleeves + Belt. Alles voor squat, deadlift en bench — grip, brace en stabiliteit in één set.</p>
+        <div class="product-footer">
+          <span class="product-price" style="color:var(--text-muted);font-size:18px;">Binnenkort</span>
+          <span class="product-btn" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);cursor:default;">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gear + Fuel Bundle -->
+    <div class="product-card reveal reveal-delay-2">
+      <div class="product-img-wrap">
+        <img src="images/preworkout-blue.jpg" alt="LIFTIQ Gear + Fuel Bundle" loading="lazy">
+        <span class="product-badge">Bespaar 15%</span>
+      </div>
+      <div class="product-body">
+        <div class="product-cat">Bundle · Gear + Fuel</div>
+        <div class="product-name">GEAR +<br>FUEL</div>
+        <p class="product-desc">Complete gear-set + Pre Lift 1 pre-workout. Train sterker én blijf gefocust — de complete uitrusting voor je zwaarste sessies.</p>
+        <div class="product-footer">
+          <span class="product-price" style="color:var(--text-muted);font-size:18px;">Binnenkort</span>
+          <span class="product-btn" style="background:var(--dark-3);color:var(--blue);border:1px solid var(--blue);cursor:default;">Coming Soon</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
