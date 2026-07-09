@@ -1,6 +1,44 @@
 <?php
 require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/_lib.php';
+
+// Productcatalogus — enige bron van waarheid: prijs, gewicht, afbeelding,
+// benefit-regel en upsell-relaties (upsellProductIds). Wordt gebruikt voor
+// serverside validatie/prijzen én om de productlijst + upsell te renderen.
+// LET OP: gear-prijzen zijn voorlopige placeholders — bevestig vóór go-live.
+$producten = [
+    'straps' => [
+        'naam' => 'D-Ring Lifting Straps', 'prijs' => 19.95, 'gewicht' => 0.150,
+        'img' => 'images/straps.jpg', 'benefit' => 'Maximale grip bij deadlifts & rows',
+        'upsell' => ['wraps', 'sleeves', 'preworkout_blue'],
+    ],
+    'wraps' => [
+        'naam' => 'Wrist Wraps', 'prijs' => 14.95, 'gewicht' => 0.120,
+        'img' => 'images/wraps.jpg', 'benefit' => 'Stabiele polssteun bij zware pushes',
+        'upsell' => ['straps', 'sleeves', 'preworkout_blue'],
+    ],
+    'sleeves' => [
+        'naam' => 'Knee Sleeves', 'prijs' => 39.95, 'gewicht' => 0.400,
+        'img' => 'images/sleeves.jpg', 'benefit' => 'Stabiliteit & warmte bij squats',
+        'upsell' => ['straps', 'wraps', 'preworkout_blue'],
+    ],
+    'preworkout_blue' => [
+        'naam' => 'Pre Lift 1 — Blueberry', 'prijs' => 34.95, 'gewicht' => 0.500,
+        'img' => 'images/preworkout-blue.jpg', 'benefit' => 'Focus, energie & pump',
+        'upsell' => ['sleeves', 'wraps', 'straps'],
+    ],
+    'preworkout_red' => [
+        'naam' => 'Pre Lift 1 — Strawberry Kiwi', 'prijs' => 34.95, 'gewicht' => 0.500,
+        'img' => 'images/preworkout-red.jpg', 'benefit' => 'Explosieve energie & focus',
+        'upsell' => ['sleeves', 'wraps', 'straps'],
+    ],
+    'preworkout_gold' => [
+        'naam' => 'Pre Lift 1 — Tropical (cafeïnevrij)', 'prijs' => 34.95, 'gewicht' => 0.500,
+        'img' => 'images/preworkout-gold.jpg', 'benefit' => 'Focus & pump zonder cafeïne',
+        'upsell' => ['sleeves', 'wraps', 'straps'],
+    ],
+];
+
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $naam     = trim($_POST['naam'] ?? '');
@@ -19,13 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (empty($postcode)) $errors[] = 'Vul je postcode in.';
         if (empty($stad))     $errors[] = 'Vul je woonplaats in.';
     }
-
-    $producten = [
-        'preworkout_blue' => ['naam' => 'Pre-Workout Blueberry',              'prijs' => 34.95, 'gewicht' => 0.500],
-        'preworkout_red'  => ['naam' => 'Pre-Workout Strawberry Kiwi',        'prijs' => 34.95, 'gewicht' => 0.500],
-        'preworkout_gold' => ['naam' => 'Pre-Workout Tropical (cafeïnevrij)', 'prijs' => 34.95, 'gewicht' => 0.500],
-        'shaker'          => ['naam' => 'Shakebeker LIFTIQ',                  'prijs' => 12.95, 'gewicht' => 0.200],
-    ];
 
     $bestelling = $_POST['bestelling'] ?? [];
     $totaal  = 0;
@@ -169,6 +200,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   .levering-opties { flex-direction: column; }
   .steps { display: none; }
 }
+
+/* Upsell / cross-sell — "Bestel dit erbij" */
+.upsell-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1rem; }
+.upsell-card { background: var(--dark-3); border: 1px solid var(--border); padding: 1rem; display: flex; flex-direction: column; gap: 0.55rem; transition: border-color var(--transition); }
+.upsell-card:hover { border-color: var(--blue); }
+.upsell-card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: var(--dark); display: block; }
+.upsell-name { font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--white); }
+.upsell-benefit { font-size: 11px; color: var(--text-muted); line-height: 1.4; flex: 1; }
+.upsell-foot { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+.upsell-price { font-family: Impact, sans-serif; font-size: 16px; color: var(--blue); }
+.upsell-add { background: var(--blue); color: var(--dark); border: none; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 8px 12px; cursor: pointer; transition: background var(--transition); white-space: nowrap; }
+.upsell-add:hover { background: var(--blue-dark); color: #fff; }
+@media (max-width: 520px) { .upsell-grid { grid-template-columns: 1fr 1fr; } }
 </style>
 </head>
 <body>
@@ -221,51 +265,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="form-section">
       <div class="form-section-title">1 — Kies je producten</div>
       <div class="product-lijst">
+        <?php foreach ($producten as $pid => $p): ?>
         <div class="product-item">
           <div class="product-item-info">
-            <div class="product-item-name">Pre-Workout Blueberry</div>
-            <div class="product-item-price">€34,95</div>
+            <div class="product-item-name"><?= htmlspecialchars($p['naam']) ?></div>
+            <div class="product-item-price">&euro;<?= number_format($p['prijs'], 2, ',', '.') ?></div>
           </div>
           <div class="product-item-qty">
-            <select name="bestelling[preworkout_blue]" class="qty-select" data-price="34.95">
+            <select name="bestelling[<?= $pid ?>]" class="qty-select" data-id="<?= $pid ?>" data-price="<?= number_format($p['prijs'], 2, '.', '') ?>">
               <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
             </select>
           </div>
         </div>
-        <div class="product-item">
-          <div class="product-item-info">
-            <div class="product-item-name">Pre-Workout Strawberry Kiwi</div>
-            <div class="product-item-price">€34,95</div>
-          </div>
-          <div class="product-item-qty">
-            <select name="bestelling[preworkout_red]" class="qty-select" data-price="34.95">
-              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
-            </select>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-item-info">
-            <div class="product-item-name">Pre-Workout Tropical (cafeïnevrij)</div>
-            <div class="product-item-price">€34,95 <span style="font-size:10px;color:var(--text-muted)">cafeïnevrij</span></div>
-          </div>
-          <div class="product-item-qty">
-            <select name="bestelling[preworkout_gold]" class="qty-select" data-price="34.95">
-              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
-            </select>
-          </div>
-        </div>
-        <div class="product-item">
-          <div class="product-item-info">
-            <div class="product-item-name">Shakebeker LIFTIQ</div>
-            <div class="product-item-price">€12,95</div>
-          </div>
-          <div class="product-item-qty">
-            <select name="bestelling[shaker]" class="qty-select" data-price="12.95">
-              <?php for($i=0;$i<=5;$i++) echo "<option value='$i'" . (($i==0)?'selected':'') . ">$i</option>"; ?>
-            </select>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
+    </div>
+
+    <!-- BESTEL DIT ERBIJ (upsell / cross-sell) -->
+    <div class="form-section" id="upsell-section" style="display:none;">
+      <div class="form-section-title">Bestel dit erbij</div>
+      <div class="upsell-grid" id="upsell-grid"></div>
     </div>
 
     <!-- STAP 2: LEVERING -->
@@ -403,7 +422,58 @@ function updateTotaal() {
 
   const steps = [document.getElementById('step-1'), document.getElementById('step-2'), document.getElementById('step-3'), document.getElementById('step-4')];
   steps.forEach((s, i) => { s.classList.remove('active','done'); if (i === 0) { if (items.length) { s.classList.add('done'); steps[1]?.classList.add('active'); } else s.classList.add('active'); } });
+
+  renderUpsell();
 }
+
+// --- Upsell / cross-sell ---
+// Productdata uit de PHP-catalogus (enige bron van waarheid).
+const PRODUCTS = <?= json_encode($producten, JSON_UNESCAPED_UNICODE) ?>;
+
+function renderUpsell() {
+  const section = document.getElementById('upsell-section');
+  const grid = document.getElementById('upsell-grid');
+  if (!section || !grid) return;
+
+  // Wat zit er in de winkelwagen?
+  const inCart = new Set();
+  document.querySelectorAll('.qty-select').forEach(s => { if (parseInt(s.value) > 0) inCart.add(s.dataset.id); });
+
+  // Verzamel upsell-suggesties: per product in de wagen, sluit reeds-in-wagen uit, dedupliceer.
+  const seen = new Set();
+  const suggest = [];
+  inCart.forEach(id => {
+    const p = PRODUCTS[id];
+    if (!p || !p.upsell) return;
+    p.upsell.forEach(uid => {
+      if (!inCart.has(uid) && !seen.has(uid) && PRODUCTS[uid]) { seen.add(uid); suggest.push(uid); }
+    });
+  });
+
+  const top = suggest.slice(0, 3); // maximaal 3 relevante suggesties
+  if (inCart.size === 0 || top.length === 0) { section.style.display = 'none'; grid.innerHTML = ''; return; }
+
+  grid.innerHTML = top.map(id => {
+    const p = PRODUCTS[id];
+    const price = '€' + Number(p.prijs).toFixed(2).replace('.', ',');
+    return '<div class="upsell-card">'
+      + '<img src="' + p.img + '" alt="' + p.naam + '" loading="lazy">'
+      + '<div class="upsell-name">' + p.naam + '</div>'
+      + '<div class="upsell-benefit">' + p.benefit + '</div>'
+      + '<div class="upsell-foot"><span class="upsell-price">' + price + '</span>'
+      + '<button type="button" class="upsell-add" data-add="' + id + '">Toevoegen</button></div>'
+      + '</div>';
+  }).join('');
+  section.style.display = '';
+}
+
+// "Toevoegen" → zet de hoeveelheid van dat product op 1 en werk totalen + upsell bij.
+document.getElementById('upsell-grid').addEventListener('click', e => {
+  const btn = e.target.closest('.upsell-add');
+  if (!btn) return;
+  const sel = document.querySelector('.qty-select[data-id="' + btn.dataset.add + '"]');
+  if (sel) { if (parseInt(sel.value) === 0) sel.value = '1'; updateTotaal(); }
+});
 
 document.querySelectorAll('.qty-select').forEach(s => s.addEventListener('change', updateTotaal));
 document.querySelectorAll('input[name="levering"]').forEach(r => r.addEventListener('change', updateTotaal));
