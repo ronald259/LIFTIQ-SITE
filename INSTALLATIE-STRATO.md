@@ -1,49 +1,59 @@
-# LIFTIQ webshop — installeren op Strato
+# LIFTIQ webshop — live zetten op STRATO
 
-Korte handleiding om de webshop live te zetten op **liftiqgear.nl** (Strato-hosting).
+Voor jouw setup: **STRATO Hosting Advanced** (contract 9967964) met de domeinen
+**liftiqgear.nl** (hoofddomein) en **liftiqgear.com** (doorverwijzing).
 
-## 1. Sleutels invullen
-1. Hernoem `config.php.example` naar **`config.php`**.
-2. Open `config.php` en vul in:
-   - **MOLLIE_API_KEY** — Mollie-dashboard → Developers → API-keys (live key).
-   - **SENDCLOUD_PUBLIC_KEY** en **SENDCLOUD_SECRET_KEY** — SendCloud-paneel →
-     Instellingen → Integraties → *Sendcloud API* (Public + Secret key).
-   - **SITE_URL** — staat al goed op `https://liftiqgear.nl`.
+---
 
-> `config.php` bevat je geheime sleutels. Upload 'm wél naar de server, maar deel
-> 'm nooit en zet 'm niet in Git (staat al in `.gitignore`).
+## 1. Domein instellen (STRATO-paneel)
+1. **Mijn account → Pakketten → STRATO Hosting Advanced → Domeinen.**
+2. Zet **`liftiqgear.nl`** als **hoofddomein** dat naar de webruimte-hoofdmap wijst
+   (bij Strato meestal de map die aan het pakket hangt).
+3. Zet **`liftiqgear.com`** op **doorsturen (redirect) naar `https://liftiqgear.nl`**
+   — of laat 'm naar dezelfde map wijzen als je beide wilt laten werken.
 
-## 2. Uploaden naar Strato
-Upload **alle** bestanden uit deze map naar de webroot van liftiqgear.nl
-(bij Strato meestal de map die aan het domein gekoppeld is, bijv. de
-hoofdmap of een submap). Gebruik FTP (FileZilla) of Strato Bestandsbeheer.
+## 2. PHP-versie
+- **PHP-instellingen** → zet op **PHP 8.0 of hoger**.
 
-**Let op — neem de verborgen bestanden mee:**
-- `.htaccess` (in de hoofdmap) — beschermt sleutels en logs.
+## 3. SSL (https)
+- **SSL** → activeer het gratis **Let's Encrypt**-certificaat voor beide domeinen.
+  De hele webshop draait op `https://` (nodig voor Mollie/SendCloud).
+
+## 4. Bestanden uploaden
+Upload **alle** bestanden uit deze map naar de **webroot** van liftiqgear.nl
+(FTP met FileZilla, of STRATO Bestandsbeheer).
+
+**Neem de verborgen bestanden mee:**
+- `.htaccess` (hoofdmap) — beschermt sleutels en logs.
 - `logs/.htaccess` — houdt de logmap privé.
 
-## 3. Serverinstellingen (Strato-paneel)
-- **PHP-versie:** zet op **8.0 of hoger** (PHP-instellingen in het Strato-paneel).
-- **Map `logs/` schrijfbaar:** PHP schrijft hierin order- en webhook-logs.
-  Meestal automatisch goed; lukt het niet, zet de rechten op `755`.
+FTP-gegevens vind je in het paneel onder **Toegang / FTP**.
 
-## 4. E-mail
-Maak de mailbox **info@liftiqgear.nl** aan in het Strato-paneel (anders komen
-klant-/contactmails niet aan).
+## 5. Sleutels invullen
+1. Hernoem `config.php.example` → **`config.php`**.
+2. Vul in:
+   - **MOLLIE_API_KEY** — Mollie-dashboard → Developers → API-keys (live key).
+   - **SENDCLOUD_PUBLIC_KEY** + **SENDCLOUD_SECRET_KEY** — SendCloud-paneel →
+     Instellingen → Integraties → *Sendcloud API*.
+   - **SITE_URL** — staat al goed op `https://liftiqgear.nl`.
 
-## 5. Domein / DNS
-Zorg dat **liftiqgear.nl** naar je Strato-webhosting wijst en als (hoofd)domein
-gekoppeld is. Dit is nodig zodat Mollie de webhook
-`https://liftiqgear.nl/webhook.php` publiek kan bereiken.
+> `config.php` bevat je geheime sleutels — upload 'm wél, maar deel 'm nooit
+> (staat in `.gitignore`, komt niet in Git).
 
-## 6. Testen
-1. Open `https://liftiqgear.nl` → site laadt.
-2. Plaats een testbestelling via `bestellen.php`.
-   - Tip: gebruik tijdelijk een **Mollie test-API-key** om zonder echte betaling
-     de flow te testen.
-3. Na "betaald": de order verschijnt automatisch in **SendCloud** → label printen
-   in de SendCloud-app.
-4. Controleer bij twijfel de logs in de map `logs/` (`orders.log`, `webhook.log`).
+## 6. E-mail
+- Maak de mailbox **info@liftiqgear.nl** aan (STRATO-paneel → E-mail).
+
+## 7. Logmap schrijfbaar
+- De map **`logs/`** moet schrijfbaar zijn (order-/webhook-logs). Meestal
+  automatisch goed; lukt het niet, zet de rechten op `755`.
+
+## 8. Testen
+1. Open `https://liftiqgear.nl` → site laadt met slotje (SSL).
+2. Homepage → **In winkelmand** → **Ga door naar betalen** → op `bestellen.php`
+   staan de aantallen ingevuld + de upsell "Bestel dit erbij".
+3. Reken af — gebruik tijdelijk een **Mollie test-API-key** om zonder echte
+   betaling te testen. Na "betaald" verschijnt de order in **SendCloud**.
+4. Bij twijfel: check `logs/orders.log` en `logs/webhook.log`.
 
 ## Hoe het werkt
 ```
@@ -54,7 +64,8 @@ Klant bestelt  →  betaalt via Mollie (iDEAL)
    →  Dustin print het label vanaf zijn telefoon
 ```
 
-## Let op: ontbrekende pagina
-De menubalk bevat een link **"Gear" → `gear.html`**, maar dat bestand bestaat nog
-niet (geeft een 404). Laat `gear.html` maken, of laat de Gear-link verwijderen/
-omleiden.
+## Let op
+- **Gear-prijzen** in `bestellen.php` zijn voorlopige placeholders
+  (straps €19,95 · wraps €14,95 · sleeves €39,95) — bevestig vóór go-live.
+- De menubalk-link **"Gear"** in `bestellen.php` verwijst nog naar `gear.html`
+  (bestaat niet). Laat 'm weghalen of maken indien nodig.
