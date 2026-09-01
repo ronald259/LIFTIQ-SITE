@@ -1,0 +1,31 @@
+LIFTIQ WordPress-thema (child van Storefront)
+=============================================
+
+Dit thema geeft je WooCommerce-winkel de LIFTIQ-look: donker, cyaan accent,
+Impact-achtige koppen. Het bouwt voort op "Storefront" (het officiele,
+gratis WooCommerce-thema), dus dat moet er eerst op.
+
+INSTALLEREN
+-----------
+1. Ouder-thema installeren:
+   wp-admin -> Weergave -> Thema's -> Nieuw thema toevoegen
+   -> zoek "Storefront" (van Automattic/WooCommerce) -> Installeren
+   (NIET activeren is ook prima; het child-thema activeert 'm mee.)
+
+2. LIFTIQ-thema uploaden:
+   Weergave -> Thema's -> Nieuw thema toevoegen -> Thema uploaden
+   -> kies dit bestand: liftiq-theme.zip -> Nu installeren -> Activeren.
+
+3. Logo instellen:
+   Weergave -> Aanpassen -> Site-identiteit -> Logo
+   -> upload assets/liftiq-logo-white.png (zit in deze map).
+
+4. Menu instellen (nav):
+   Weergave -> Menu's -> maak een menu met o.a. Shop, Supplements, Gear,
+   Bundles, Over -> plaats op "Primary/Hoofdmenu".
+
+KLAAR. De winkel, productpagina's en checkout krijgen automatisch de
+LIFTIQ-stijl. Fijn afstellen kan later via Weergave -> Aanpassen.
+
+Let op: dit stylet de WooCommerce-winkel in LIFTIQ-stijl. De exacte
+marketing-homepage (hero, secties) bouwen we als vervolgstap verder uit.

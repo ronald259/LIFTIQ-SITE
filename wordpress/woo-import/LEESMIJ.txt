@@ -1,0 +1,20 @@
+LIFTIQ — WooCommerce productimport
+==================================
+
+Inhoud:
+- liftiq-producten.csv   → importbestand met 6 producten
+- afbeelding/            → de bijbehorende productfoto's
+
+3 producten staan op GEPUBLICEERD (de pre-workouts).
+3 gear-producten staan op CONCEPT (Published=0) met placeholder-prijzen
+(straps €19,95 · wraps €14,95 · sleeves €39,95) — activeer + prijzen
+bevestigen zodra je ze wilt verkopen.
+
+Zo importeer je (in WordPress/WooCommerce):
+1. Media -> Nieuw bestand -> upload ALLE foto's uit de map 'afbeelding'
+   (WooCommerce koppelt ze op bestandsnaam).
+2. Producten -> Alle producten -> Importeren -> kies liftiq-producten.csv.
+3. Kolommen laten matchen (Woo herkent de standaardnamen) -> Importeren.
+4. Controleer prijzen, categorieen en foto's.
+
+Tip: begin in de Mollie/SendCloud-plugins met de TEST-keys om veilig te proberen.

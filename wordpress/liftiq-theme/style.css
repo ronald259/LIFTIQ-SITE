@@ -1,0 +1,320 @@
+/*
+Theme Name: LIFTIQ
+Theme URI: https://liftiqgear.nl
+Description: LIFTIQ — premium fitness gear thema. Child-thema van Storefront: donkere look, cyaan accent, Impact-koppen. Gear Up. Lift Smarter. Push Heavier.
+Author: LIFTIQ
+Template: storefront
+Version: 1.1.0
+Requires at least: 6.0
+Requires PHP: 7.4
+*/
+
+/* ============================================================
+   LIFTIQ — design tokens
+   ============================================================ */
+:root {
+  --liftiq-dark:        #0a0a0a;
+  --liftiq-dark-2:      #111111;
+  --liftiq-dark-3:      #1a1a1a;
+  --liftiq-blue:        #00CFFF;
+  --liftiq-blue-dark:   #0099CC;
+  --liftiq-white:       #ffffff;
+  --liftiq-muted:       #8a8a8a;
+  --liftiq-border:      rgba(0,207,255,0.15);
+  --liftiq-border-str:  rgba(0,207,255,0.40);
+  --liftiq-head:        'Anton','Impact','Arial Narrow',sans-serif;
+  --liftiq-body:        'Helvetica Neue',Arial,sans-serif;
+}
+
+/* ============================================================
+   Globaal — donkere basis
+   ============================================================ */
+body,
+body.woocommerce,
+.site,
+.site-content {
+  background: var(--liftiq-dark);
+  color: rgba(255,255,255,0.82);
+  font-family: var(--liftiq-body);
+}
+body { -webkit-font-smoothing: antialiased; }
+
+a { color: var(--liftiq-blue); }
+a:hover { color: var(--liftiq-blue-dark); }
+
+h1,h2,h3,h4,h5,h6,
+.site-title,
+.entry-title,
+.product_title,
+.section-title {
+  font-family: var(--liftiq-head);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--liftiq-white);
+  font-weight: 400;
+}
+
+p, li, td, .price, .woocommerce-Price-amount { color: rgba(255,255,255,0.78); }
+
+/* ============================================================
+   Header / navigatie
+   ============================================================ */
+.site-header {
+  background: var(--liftiq-dark-2) !important;
+  border-bottom: 1px solid var(--liftiq-border);
+}
+.site-header,
+.site-header a,
+.main-navigation ul li a,
+.site-branding .site-title a {
+  color: rgba(255,255,255,0.85);
+}
+.main-navigation ul li a:hover,
+.main-navigation ul li.current-menu-item > a {
+  color: var(--liftiq-blue);
+}
+.main-navigation ul.menu > li > a,
+.main-navigation ul.nav-menu > li > a {
+  font-family: var(--liftiq-body);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.site-header .custom-logo { max-height: 40px; width: auto; }
+
+/* zoek/cart iconen */
+.site-header-cart .cart-contents,
+.site-search .widget_product_search { color: #fff; }
+
+/* ============================================================
+   Knoppen — cyaan
+   ============================================================ */
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+.button,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.woocommerce #respond input#submit,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+  background-color: var(--liftiq-blue);
+  color: var(--liftiq-dark);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  border: none;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+button:hover,
+.button:hover,
+.woocommerce a.button:hover,
+.woocommerce button.button:hover,
+.woocommerce input.button:hover,
+.woocommerce #respond input#submit:hover,
+.woocommerce a.button.alt:hover,
+.woocommerce button.button.alt:hover,
+.woocommerce input.button.alt:hover {
+  background-color: var(--liftiq-blue-dark);
+  color: #fff;
+}
+
+/* secundaire knop (outline) */
+.woocommerce a.added_to_cart {
+  color: var(--liftiq-blue);
+  border-bottom: 1px solid var(--liftiq-blue);
+}
+
+/* ============================================================
+   Productoverzicht (shop / categorie)
+   ============================================================ */
+.woocommerce ul.products li.product,
+.woocommerce-page ul.products li.product {
+  background: var(--liftiq-dark-2);
+  border: 1px solid var(--liftiq-border);
+  padding: 1rem 1rem 1.4rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.woocommerce ul.products li.product:hover {
+  border-color: var(--liftiq-blue);
+  box-shadow: 0 0 34px rgba(0,207,255,0.14), 0 18px 50px rgba(0,0,0,0.5);
+  transform: translateY(-4px);
+}
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+  font-family: var(--liftiq-head);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--liftiq-white);
+  font-size: 1.15em;
+  padding-top: 0.7em;
+}
+.woocommerce ul.products li.product .price {
+  font-family: var(--liftiq-head);
+  color: var(--liftiq-blue);
+  font-size: 1.25em;
+}
+.woocommerce ul.products li.product .price del { color: var(--liftiq-muted); }
+.woocommerce ul.products li.product .price ins { color: var(--liftiq-blue); text-decoration: none; }
+
+/* sale-badge */
+.woocommerce span.onsale {
+  background: var(--liftiq-blue);
+  color: var(--liftiq-dark);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 0;
+  min-height: auto;
+  min-width: auto;
+  padding: 6px 12px;
+  line-height: 1;
+}
+
+/* ============================================================
+   Losse productpagina
+   ============================================================ */
+.woocommerce div.product .product_title { font-size: 2.2em; }
+.woocommerce div.product p.price,
+.woocommerce div.product span.price {
+  color: var(--liftiq-blue);
+  font-family: var(--liftiq-head);
+  font-size: 1.8em;
+}
+.woocommerce div.product .woocommerce-tabs ul.tabs li.active {
+  background: var(--liftiq-dark-3);
+  border-color: var(--liftiq-border);
+}
+.woocommerce .quantity .qty {
+  background: var(--liftiq-dark-3);
+  color: #fff;
+  border: 1px solid var(--liftiq-border);
+}
+
+/* ============================================================
+   Winkelwagen & checkout
+   ============================================================ */
+.woocommerce table.shop_table,
+.woocommerce-cart table.cart,
+.woocommerce .cart-collaterals .cart_totals,
+.woocommerce-checkout #payment,
+.woocommerce form.checkout_coupon,
+.woocommerce-info,
+.woocommerce-message {
+  background: var(--liftiq-dark-2);
+  border-color: var(--liftiq-border) !important;
+  color: rgba(255,255,255,0.82);
+}
+.woocommerce-info { border-top-color: var(--liftiq-blue) !important; }
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td { border-color: var(--liftiq-border); }
+
+.woocommerce form .form-row input.input-text,
+.woocommerce form .form-row textarea,
+.woocommerce form .form-row select,
+.select2-container--default .select2-selection--single {
+  background: var(--liftiq-dark-3);
+  color: #fff;
+  border: 1px solid var(--liftiq-border);
+  border-radius: 0;
+}
+.woocommerce-checkout #payment { border-radius: 0; }
+.woocommerce-checkout #payment div.payment_box { background: var(--liftiq-dark-3); color: rgba(255,255,255,0.8); }
+.woocommerce-checkout #payment div.payment_box::before { border-bottom-color: var(--liftiq-dark-3); }
+
+/* coupon-veld (kortingscodes) accent */
+.woocommerce form.checkout_coupon .button,
+.woocommerce-cart .actions .coupon .button { background: var(--liftiq-blue); }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.site-footer {
+  background: var(--liftiq-dark-2) !important;
+  border-top: 1px solid var(--liftiq-border);
+  color: var(--liftiq-muted);
+}
+.site-footer a { color: rgba(255,255,255,0.7); }
+.site-footer a:hover { color: var(--liftiq-blue); }
+
+/* ============================================================
+   Diverse Storefront-elementen donker maken
+   ============================================================ */
+.storefront-sorting,
+.woocommerce-breadcrumb,
+.widget,
+.secondary-navigation a { color: rgba(255,255,255,0.7); }
+.woocommerce-breadcrumb a { color: var(--liftiq-blue); }
+
+.storefront-product-section .section-title,
+.page-template-template-homepage .hentry .entry-title { color: var(--liftiq-white); }
+
+/* selectie-kleur */
+::selection { background: var(--liftiq-blue); color: var(--liftiq-dark); }
+
+/* ============================================================
+   Checkout / winkelwagen / betaal-voor-bestelling — FORCE donker & leesbaar
+   (staat als laatste zodat het alle Storefront-defaults overschrijft)
+   ============================================================ */
+
+/* Zijbalk overal weg → volle breedte */
+#secondary, .widget-area { display: none !important; }
+#primary, .content-area { width: 100% !important; float: none !important; margin: 0 !important; }
+
+/* Labels + placeholders */
+.woocommerce form .form-row label,
+.woocommerce-checkout label,
+.wc-block-components-text-input label { color: rgba(255,255,255,0.9) !important; }
+.woocommerce form .form-row input::placeholder,
+.woocommerce form .form-row textarea::placeholder,
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.5) !important; opacity: 1; }
+
+/* Alle besteltabellen + betaalblok donker (winkelwagen, checkout, order-pay, bedankt) */
+.woocommerce table.shop_table,
+.woocommerce table.shop_table thead,
+.woocommerce table.shop_table tbody,
+.woocommerce table.shop_table tfoot,
+.woocommerce table.shop_table tr,
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td,
+.woocommerce table.shop_table tbody tr:nth-child(2n) td,
+.woocommerce #order_review,
+.woocommerce #payment,
+.woocommerce #payment ul.payment_methods,
+.woocommerce #payment ul.payment_methods li,
+.woocommerce #payment .place-order,
+.woocommerce #payment .woocommerce-privacy-policy-text,
+.woocommerce #payment .woocommerce-terms-and-conditions-wrapper {
+  background-color: var(--liftiq-dark-2) !important;
+  background-image: none !important;
+}
+.woocommerce table.shop_table th,
+.woocommerce table.shop_table td,
+.woocommerce table.shop_table td *,
+.woocommerce table.shop_table .amount,
+.woocommerce #order_review *,
+.woocommerce #payment ul.payment_methods li,
+.woocommerce #payment ul.payment_methods label,
+.woocommerce #payment .woocommerce-privacy-policy-text,
+.woocommerce #payment .woocommerce-privacy-policy-text * {
+  color: rgba(255,255,255,0.88) !important;
+  border-color: rgba(255,255,255,0.08) !important;
+}
+.woocommerce #payment div.payment_box { background: var(--liftiq-dark-3) !important; color: #eee !important; }
+.woocommerce #payment div.payment_box::before { border-bottom-color: var(--liftiq-dark-3) !important; }
+.woocommerce #place_order,
+.woocommerce #order_review .button.alt,
+.woocommerce button.button.alt { background: var(--liftiq-blue) !important; color: var(--liftiq-dark) !important; }
+
+/* Block-checkout (voor de zekerheid) */
+.wc-block-components-text-input input,
+.wc-block-components-textarea,
+.wc-blocks-components-select select {
+  color: #fff !important;
+  background: var(--liftiq-dark-3) !important;
+  border: 1px solid var(--liftiq-border) !important;
+}

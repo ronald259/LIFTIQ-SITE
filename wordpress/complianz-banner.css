@@ -1,0 +1,40 @@
+/* ============================================================
+   Complianz cookiebanner — LIFTIQ-stijl
+   Plakken in: WordPress → Weergave → Aanpassen → Extra CSS
+   ============================================================ */
+#cmplz-cookiebanner-container .cmplz-cookiebanner {
+  background-color: #111 !important;
+  color: #fff !important;
+  border: 1px solid rgba(0,207,255,0.3) !important;
+  border-radius: 0 !important;
+  font-family: 'Helvetica Neue', Arial, sans-serif !important;
+}
+#cmplz-cookiebanner-container .cmplz-cookiebanner .cmplz-title,
+#cmplz-cookiebanner-container .cmplz-cookiebanner .cmplz-text,
+#cmplz-cookiebanner-container .cmplz-cookiebanner p,
+#cmplz-cookiebanner-container .cmplz-cookiebanner label { color: rgba(255,255,255,0.85) !important; }
+#cmplz-cookiebanner-container .cmplz-cookiebanner a { color: #00CFFF !important; }
+
+/* Accepteren-knop = cyaan */
+#cmplz-cookiebanner-container .cmplz-btn.cmplz-accept {
+  background-color: #00CFFF !important;
+  color: #0a0a0a !important;
+  border: none !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+/* Weigeren / instellingen = outline */
+#cmplz-cookiebanner-container .cmplz-btn.cmplz-deny,
+#cmplz-cookiebanner-container .cmplz-btn.cmplz-view-preferences,
+#cmplz-cookiebanner-container .cmplz-btn.cmplz-save-preferences {
+  background-color: transparent !important;
+  color: #fff !important;
+  border: 1px solid rgba(0,207,255,0.5) !important;
+}
+#cmplz-cookiebanner-container .cmplz-btn.cmplz-deny:hover,
+#cmplz-cookiebanner-container .cmplz-btn.cmplz-view-preferences:hover {
+  border-color: #00CFFF !important; color: #00CFFF !important;
+}
+/* Toggle-accent cyaan */
+#cmplz-cookiebanner-container .cmplz-cookiebanner input:checked + .cmplz-slider { background-color: #00CFFF !important; }
